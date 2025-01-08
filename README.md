@@ -1,9 +1,3 @@
-Trabalho de Banco de dados 2 
-Link para o Trello: https://trello.com/invite/b/677e65cb9121d5c4b0109559/ATTIfb903a1fca57626c42b84ebec001345919843A33/trabalho-de-banco-2
-Aqui está um resumo que você pode colocar no GitHub para o seu trabalho:
-
----
-
 ## 📚 **Trabalho 2 - Banco de Dados 2**  
 **Curso:** Engenharia de Software  
 **Universidade:** Universidade Tecnológica Federal do Paraná - Câmpus Dois Vizinhos  
@@ -41,3 +35,10 @@ Este trabalho consiste no desenvolvimento de uma aplicação simples integrada a
 
 ### **Objetivo do Trabalho**  
 Este trabalho visa desenvolver habilidades em integração de aplicações com banco de dados, manipulação de dados, controle de transações, segurança e gestão de privilégios, além de otimização de consultas por meio da criação de índices. O projeto também inclui a implementação de uma rotina de backup para garantir a recuperação dos dados.
+
+### **Link para o Trello**
+O projeto está sendo gerenciado através de um quadro no Trello. Para acompanhar o progresso e o status das tarefas, acesse o Trello do Projeto - Banco de Dados 2. 
+Trabalho de Banco de dados 2 
+Link para o Trello: https://trello.com/invite/b/677e65cb9121d5c4b0109559/ATTIfb903a1fca57626c42b84ebec001345919843A33/trabalho-de-banco-2
+
+
