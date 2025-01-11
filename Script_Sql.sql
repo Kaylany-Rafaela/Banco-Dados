@@ -91,6 +91,3 @@ END;
 $$ LANGUAGE plpgsql;
 
 SELECT teste_rollback();
-
-
-teste
