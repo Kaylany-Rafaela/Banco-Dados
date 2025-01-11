@@ -70,6 +70,26 @@ CREATE INDEX idx_fornecedores_descricao ON tb_fornecedores (for_descricao);
 -- Justificativa: Acelera consultas que filtram produtos por faixa de valor, como relatórios financeiros.
 CREATE INDEX idx_produtos_valor ON tb_produtos (pro_valor);
 
+-- Função para simular ROLLBACK
+CREATE OR REPLACE FUNCTION teste_rollback()
+RETURNS void AS $$
+BEGIN
+    -- Início da transação
+    INSERT INTO tb_produtos (pro_codigo, pro_descricao, pro_valor, pro_quantidade, tb_fornecedores_for_codigo)
+    VALUES (999, 'Produto Inválido', 100.00, 10, 1);
 
+    -- Erro proposital para testar o Rollback
+    PERFORM 1 / 0; -- Divisão por zero
+
+    -- Este código nunca será alcançado devido ao erro acima
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE NOTICE 'Erro encontrado. Rollback realizado.';
+        -- O Rollback já foi executado automaticamente pelo PostgreSQL
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT teste_rollback();
 
 
