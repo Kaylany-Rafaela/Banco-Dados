@@ -145,7 +145,7 @@ public class CadastroView extends javax.swing.JFrame {
         String email = jTextFieldEmail.getText();
         String senha = jPasswordFieldSenha.getText();
         
-        System.out.println(nome+", +email, "+senha);
+        System.out.println(nome + " / " + email + " / " + senha);
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
