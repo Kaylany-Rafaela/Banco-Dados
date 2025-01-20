@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07260ff6-be73-41c4-941f-de369f2633ef" name="Changes" comment="" />
+    <list default="true" id="07260ff6-be73-41c4-941f-de369f2633ef" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/CadastroView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/CadastroView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/CadastroView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/CadastroView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/CadastroView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/CadastroView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/CadastroView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/CadastroView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/CadastroView.class" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/CadastroView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/TelaLogin$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/TelaLogin$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/TelaLogin$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/TelaLogin$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/TelaLogin$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/TelaLogin$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/TelaLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/login/TelaLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/model/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/classes/br/com/sistemas/model/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Interface/TelaLogin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/Interface/TelaLogin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,18 +27,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Kaylany-Rafaela"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Kaylany-Rafaela&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Kaylany-Rafaela/Banco-Dados.git",
-    "accountId": "d84dae2c-d3e9-4263-b065-c7e748a9570d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Kaylany-Rafaela/Banco-Dados.git&quot;,
+    &quot;accountId&quot;: &quot;d84dae2c-d3e9-4263-b065-c7e748a9570d&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -40,6 +54,10 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -47,8 +65,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
       </set>
     </attachedChunks>
   </component>
@@ -61,6 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737238032330</updated>
       <workItem from="1737318749459" duration="186000" />
+      <workItem from="1737319110904" duration="605000" />
     </task>
     <servers />
   </component>
