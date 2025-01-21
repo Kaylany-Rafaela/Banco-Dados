@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.com.sistemas.login;
-
+//registro de teste 123321
 /**
  *
  * @author Bastos
