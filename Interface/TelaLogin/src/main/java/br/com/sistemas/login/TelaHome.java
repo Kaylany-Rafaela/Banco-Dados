@@ -56,6 +56,11 @@ public class TelaHome extends javax.swing.JFrame {
         jButton1.setText("Vendas");
 
         jButton2.setText("Estoque");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Arquivo");
         jMenuBar1.add(jMenu1);
@@ -99,6 +104,12 @@ public class TelaHome extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        TelaEstoque telaDoEstoque = new TelaEstoque();
+        telaDoEstoque.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
