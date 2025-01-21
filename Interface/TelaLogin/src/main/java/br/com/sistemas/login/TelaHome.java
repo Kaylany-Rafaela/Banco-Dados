@@ -54,6 +54,11 @@ public class TelaHome extends javax.swing.JFrame {
         jLabel1.setText("Movimentação:");
 
         jButton1.setText("Vendas");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Estoque");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +115,18 @@ public class TelaHome extends javax.swing.JFrame {
         TelaEstoque telaDoEstoque = new TelaEstoque();
         telaDoEstoque.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        TelaVenda abreTelaVenda = new TelaVenda();
+        abreTelaVenda.setVisible(true);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+                                        
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+        
+    }                                      
 
     /**
      * @param args the command line arguments
