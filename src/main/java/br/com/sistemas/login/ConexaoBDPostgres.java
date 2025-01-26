@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package br.com.sistemas.login;
 
 import java.sql.Connection;
@@ -9,10 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Aluno
- */
+
 public class ConexaoBDPostgres {
     private String url;
     private String usuario;
@@ -47,7 +41,7 @@ public class ConexaoBDPostgres {
         
         usuario = "postgres";
         senha = "utfpr"; 
-        nomeBanco = "paulo";
+        nomeBanco = "trabalhobd2";
         url = "jdbc:postgresql://localhost:5432/"+nomeBanco;         
         
         try {
