@@ -27,59 +27,66 @@ public class TelaHome extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaMostrarFuncionarios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buttonVendas = new javax.swing.JButton();
+        buttonEstoque = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menuArquivo = new javax.swing.JMenu();
+        menuBackup = new javax.swing.JMenuItem();
+        menuCadastrar = new javax.swing.JMenu();
+        menuLogout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaMostrarFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Nome", "E-mail", "Grupo", "Acesso"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaMostrarFuncionarios);
 
         jLabel1.setText("Movimentação:");
 
-        jButton1.setText("Vendas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonVendas.setText("Vendas");
+        buttonVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonVendasActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Estoque");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonEstoque.setText("Estoque");
+        buttonEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonEstoqueActionPerformed(evt);
             }
         });
 
-        jMenu1.setText("Arquivo");
-        jMenuBar1.add(jMenu1);
+        menuArquivo.setText("Arquivo");
 
-        jMenu3.setText("Cadastrar");
-        jMenuBar1.add(jMenu3);
-
-        jMenu2.setText("Logout");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        menuBackup.setText("Backup");
+        menuBackup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                menuBackupActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        menuArquivo.add(menuBackup);
+
+        jMenuBar1.add(menuArquivo);
+
+        menuCadastrar.setText("Cadastrar");
+        jMenuBar1.add(menuCadastrar);
+
+        menuLogout.setText("Logout");
+        menuLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLogoutActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(menuLogout);
 
         setJMenuBar(jMenuBar1);
 
@@ -93,9 +100,9 @@ public class TelaHome extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(buttonVendas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(buttonEstoque)))
                 .addContainerGap(164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -105,8 +112,8 @@ public class TelaHome extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(buttonEstoque)
+                    .addComponent(buttonVendas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -115,22 +122,26 @@ public class TelaHome extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEstoqueActionPerformed
         // TODO add your handling code here:
         TelaEstoque telaDoEstoque = new TelaEstoque();
         telaDoEstoque.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buttonEstoqueActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+    private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_menuLogoutActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVendasActionPerformed
         // TODO add your handling code here:
         TelaVenda abreTelaVenda = new TelaVenda();
         abreTelaVenda.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonVendasActionPerformed
+
+    private void menuBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBackupActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuBackupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,14 +179,15 @@ public class TelaHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton buttonEstoque;
+    private javax.swing.JButton buttonVendas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JMenu menuArquivo;
+    private javax.swing.JMenuItem menuBackup;
+    private javax.swing.JMenu menuCadastrar;
+    private javax.swing.JMenu menuLogout;
+    private javax.swing.JTable tabelaMostrarFuncionarios;
     // End of variables declaration//GEN-END:variables
 }
