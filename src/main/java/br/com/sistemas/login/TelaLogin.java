@@ -4,8 +4,6 @@
  */
 package br.com.sistemas.login;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import br.com.sistemas.model.UserInfo;
 
@@ -153,10 +151,12 @@ public class TelaLogin extends javax.swing.JFrame {
         UserInfo userinfo = new UserInfo(username, senha);
         
         ConexaoBDPostgres conexao = new ConexaoBDPostgres();
-        if (conexao.ConectarAoBanco(userinfo.getUsername(), userinfo.getSenha(), nomeDoBanco) == -1){
-            jLabelInfo.setText("Erro ao conectar ao banco");
+        String connectionStatus = conexao.ConectarAoBanco(userinfo.getUsername(), userinfo.getSenha(), nomeDoBanco);
+        if (connectionStatus.equals("Sucess")){
+            TelaHome telaInicial = new TelaHome();
+            telaInicial.setVisible(true);
         } else {
-            jLabelInfo.setText("Sucesso ao conectar ao banco");
+            jLabelInfo.setText(connectionStatus);
         }
         
         
@@ -169,8 +169,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     } else {
                         System.out.println("Erro: login ou senha inválidos!");
                     }*/
-        //TelaHome telaInicial = new TelaHome();
-        //telaInicial.setVisible(true);
+        
     }//GEN-LAST:event_jButtonEntrarActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed

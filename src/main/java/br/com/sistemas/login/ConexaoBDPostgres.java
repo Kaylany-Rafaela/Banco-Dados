@@ -15,20 +15,26 @@ public class ConexaoBDPostgres {
     private Connection conexao;
     private boolean status;
 
-    public int ConectarAoBanco(String user, String senha, String nomeBanco) {
+    public String ConectarAoBanco(String user, String senha, String nomeBanco) {
         this.usuario = user;
         this.senha = senha;
         this.nomeBanco = nomeBanco;        
           
          url = "jdbc:postgresql://localhost:5432/"+nomeBanco;         
+        if(user.isBlank() && senha.isBlank()){
+            return("Erro: insira uma senha e usuário");
+        } else if(user.isBlank()){
+            return "Erro: insira um usuário";
+        } else if(senha.isBlank())
+            return("Erro: insira uma senha");
          
         try {
             Class.forName("org.postgresql.Driver");
             conexao = DriverManager.getConnection(url, usuario, senha);
-            return 0;
+            return "Sucess";
 
         } catch (ClassNotFoundException | SQLException e) {
-            return -1;
+            return e.getMessage();
         }
         
     } 
