@@ -15,7 +15,7 @@ public class ConexaoBDPostgres {
     private Connection conexao;
     private boolean status;
 
-    public ConexaoBDPostgres(String user, String senha, String nomeBanco) {
+    public int ConectarAoBanco(String user, String senha, String nomeBanco) {
         this.usuario = user;
         this.senha = senha;
         this.nomeBanco = nomeBanco;        
@@ -25,10 +25,10 @@ public class ConexaoBDPostgres {
         try {
             Class.forName("org.postgresql.Driver");
             conexao = DriverManager.getConnection(url, usuario, senha);
-            System.out.println("Conexao Realizada Com Sucesso!!");
+            return 0;
 
         } catch (ClassNotFoundException | SQLException e) {
-             System.out.println("Nao foi possível conenectar com o Banco de dados!!");
+            return -1;
         }
         
     } 
@@ -37,23 +37,7 @@ public class ConexaoBDPostgres {
         return conexao;
     }
 
-    public ConexaoBDPostgres (){
-        
-        usuario = "postgres";
-        senha = "utfpr"; 
-        nomeBanco = "trabalhobd2";
-        url = "jdbc:postgresql://localhost:5432/"+nomeBanco;         
-        
-        try {
-            Class.forName("org.postgresql.Driver");
-            conexao = DriverManager.getConnection(url, usuario, senha);
-            System.out.println("Conexao Realizada Com Sucesso!!");
-
-        } catch (ClassNotFoundException | SQLException e) {
-               System.out.println("Nao foi possível conenectar com o Banco de dados!!");
-        }
-        
-    }
+    public ConexaoBDPostgres (){}
     
    
     public void disconnect() {

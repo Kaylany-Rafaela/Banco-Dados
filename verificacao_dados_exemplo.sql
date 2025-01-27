@@ -1,30 +1,61 @@
 -- Verifica e insere os dados na tabela
-CREATE OR REPLACE FUNCTION public.insert_tb_fornecedores(input1 text,input2 text)
+CREATE OR REPLACE FUNCTION insert_tb_fornecedores(inputCodigo text,inputDescricao text)
     RETURNS void AS $$
 DECLARE
     codigo BIGINT;
 	descricao VARCHAR(45);
 BEGIN
 
-	IF input1 IS NULL THEN
-        RAISE EXCEPTION 'Entrada 1 não pode ser nula';
-	ELSIF input2 IS NULL THEN
-		RAISE EXCEPTION 'Entrada 2 não pode ser nula';
+	IF inputCodigo IS NULL THEN
+        RAISE EXCEPTION 'Código não pode ser nulo';
+	ELSIF inputDescricao IS NULL THEN
+		RAISE EXCEPTION 'Descrição não pode ser nula';
     END IF;
 	
     BEGIN
-        codigo := input1::BIGINT;
+        codigo := inputCodigo::BIGINT;
     EXCEPTION WHEN others THEN
-        RAISE EXCEPTION 'Entrada 1 não é um número válido: %', input1;
+        RAISE EXCEPTION 'Código não é um número válido: %', inputCodigo;
     END;
 
 	BEGIN
-        descricao := input2::VARCHAR(45);
+        descricao := inputDescricao::VARCHAR(45);
     EXCEPTION WHEN others THEN
-        RAISE EXCEPTION 'Entrada 3 não é um texto válido: %', input2;
+        RAISE EXCEPTION 'Descrição não é um texto válido: %', inputDescricao;
     END;
 
     INSERT INTO tb_fornecedores VALUES (codigo, descricao);
+END;
+$$ LANGUAGE plpgsql;
+
+-- Verifica e altera os dados da tabela
+CREATE OR REPLACE FUNCTION update_tb_fornecedores(inputCodigo text,inputDescricao text)
+    RETURNS void AS $$
+DECLARE
+    codigo BIGINT;
+	descricao VARCHAR(45);
+BEGIN
+
+	IF inputCodigo IS NULL THEN
+        RAISE EXCEPTION 'Código não pode ser nulo';
+	ELSIF inputDescricao IS NULL THEN
+		RAISE EXCEPTION 'Descrição não pode ser nula';
+    END IF;
+	
+    BEGIN
+        codigo := inputCodigo::BIGINT;
+    EXCEPTION WHEN others THEN
+        RAISE EXCEPTION 'Código não é um número válido: %', inputCodigo;
+    END;
+
+	BEGIN
+        descricao := inputDescricao::VARCHAR(45);
+    EXCEPTION WHEN others THEN
+        RAISE EXCEPTION 'Descrição não é um texto válido: %', inputDescricao;
+    END;
+
+    UPDATE TABLE tb_fornecedores
+	set (codigo, descricao);
 END;
 $$ LANGUAGE plpgsql;
 
