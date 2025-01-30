@@ -63,12 +63,12 @@
     </Menu>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="menuArquivos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Arquivos"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuArquivosActionPerformed"/>
           </Events>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu4">
@@ -78,15 +78,15 @@
             </Menu>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
+        <Menu class="javax.swing.JMenu" name="menuEstoque">
           <Properties>
             <Property name="text" type="java.lang.String" value="Estoque"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuEstoqueActionPerformed"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="menuSair">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair"/>
           </Properties>
@@ -169,7 +169,7 @@
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="buttonSair" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="NomeOperador" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="nomeOperador" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -193,7 +193,7 @@
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="NomeOperador" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nomeOperador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="buttonSair" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="60" max="32767" attributes="0"/>
@@ -327,9 +327,9 @@
             <Property name="text" type="java.lang.String" value="Operador"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="NomeOperador">
+        <Component class="javax.swing.JTextField" name="nomeOperador">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomeOperadorActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeOperadorActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonSair">

@@ -44,13 +44,13 @@ public class TelaVenda extends javax.swing.JFrame {
         mostrarSubtotal = new javax.swing.JTextField();
         buttonConcluirVenda = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        NomeOperador = new javax.swing.JTextField();
+        nomeOperador = new javax.swing.JTextField();
         buttonSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuArquivos = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menuEstoque = new javax.swing.JMenu();
+        menuSair = new javax.swing.JMenu();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -148,9 +148,9 @@ public class TelaVenda extends javax.swing.JFrame {
 
         jLabel2.setText("Operador");
 
-        NomeOperador.addActionListener(new java.awt.event.ActionListener() {
+        nomeOperador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NomeOperadorActionPerformed(evt);
+                nomeOperadorActionPerformed(evt);
             }
         });
 
@@ -192,7 +192,7 @@ public class TelaVenda extends javax.swing.JFrame {
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(buttonSair)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(NomeOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addComponent(nomeOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addGap(29, 29, 29))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,7 +205,7 @@ public class TelaVenda extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NomeOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSair))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -230,28 +230,28 @@ public class TelaVenda extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenu1.setText("Arquivos");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        menuArquivos.setText("Arquivos");
+        menuArquivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                menuArquivosActionPerformed(evt);
             }
         });
 
         jMenu4.setText("Backup");
-        jMenu1.add(jMenu4);
+        menuArquivos.add(jMenu4);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuArquivos);
 
-        jMenu3.setText("Estoque");
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+        menuEstoque.setText("Estoque");
+        menuEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
+                menuEstoqueActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuEstoque);
 
-        jMenu2.setText("Sair");
-        jMenuBar1.add(jMenu2);
+        menuSair.setText("Sair");
+        jMenuBar1.add(menuSair);
 
         setJMenuBar(jMenuBar1);
 
@@ -285,17 +285,17 @@ public class TelaVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mostrarSubtotalActionPerformed
 
-    private void NomeOperadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeOperadorActionPerformed
+    private void nomeOperadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeOperadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NomeOperadorActionPerformed
+    }//GEN-LAST:event_nomeOperadorActionPerformed
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    private void menuArquivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuArquivosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_menuArquivosActionPerformed
 
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+    private void menuEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEstoqueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu3ActionPerformed
+    }//GEN-LAST:event_menuEstoqueActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
         // TODO add your handling code here:
@@ -339,7 +339,6 @@ public class TelaVenda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField NomeOperador;
     private javax.swing.JButton buttonAdicionar;
     private javax.swing.JButton buttonConcluirVenda;
     private javax.swing.JButton buttonSair;
@@ -350,17 +349,18 @@ public class TelaVenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
+    private javax.swing.JMenu menuArquivos;
     private java.awt.MenuBar menuBar1;
+    private javax.swing.JMenu menuEstoque;
+    private javax.swing.JMenu menuSair;
     private javax.swing.JTextField mostrarSubtotal;
+    private javax.swing.JTextField nomeOperador;
     private javax.swing.JSpinner seletorDeQuantidadeDeVenda;
     private javax.swing.JTable tabelaMostrarProdutosVendas;
     private javax.swing.JTextField textoCodigoProduto;

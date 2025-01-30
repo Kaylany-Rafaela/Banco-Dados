@@ -40,22 +40,40 @@ public class TelaEstoque extends javax.swing.JFrame {
 
         tabelaProdutosEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID do Produto", "Descrição", "Quantidade", "Preço Unitário", "Status"
+                "ID do Produto", "Descrição", "Quantidade", "Preço Unitário"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tabelaProdutosEstoque);
 
         buttonAdicionarRemover.setText("Adicionar/Remover");
+        buttonAdicionarRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdicionarRemoverActionPerformed(evt);
+            }
+        });
 
         buttonGerarRelatorio.setText("Gerar Relatório");
 
         buttonBuscar.setText("Buscar");
+        buttonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBuscarActionPerformed(evt);
+            }
+        });
 
         campoBuscarProduto.setText("Produto");
         campoBuscarProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +132,15 @@ public class TelaEstoque extends javax.swing.JFrame {
     private void campoBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBuscarProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoBuscarProdutoActionPerformed
+
+    private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
+//         TODO add your handling code here:
+    }//GEN-LAST:event_buttonBuscarActionPerformed
+
+    private void buttonAdicionarRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarRemoverActionPerformed
+        AdicionarProduto telaAdicionarProduto = new AdicionarProduto();
+        telaAdicionarProduto.setVisible(true);
+    }//GEN-LAST:event_buttonAdicionarRemoverActionPerformed
 
     /**
      * @param args the command line arguments

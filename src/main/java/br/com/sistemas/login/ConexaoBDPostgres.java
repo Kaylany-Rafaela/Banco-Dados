@@ -1,69 +1,57 @@
-
 package br.com.sistemas.login;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
-
 
 public class ConexaoBDPostgres {
-    private String url;
-    private String usuario;
-    private String senha;
-    private String nomeBanco;
-    private Connection conexao;
-    private boolean status;
 
-    public ConexaoBDPostgres(String user, String senha, String nomeBanco) {
-        this.usuario = user;
-        this.senha = senha;
-        this.nomeBanco = nomeBanco;        
-          
-         url = "jdbc:postgresql://localhost:5432/"+nomeBanco;         
-         
-        try {
-            Class.forName("org.postgresql.Driver");
-            conexao = DriverManager.getConnection(url, usuario, senha);
-            System.out.println("Conexao Realizada Com Sucesso!!");
-
-        } catch (ClassNotFoundException | SQLException e) {
-             System.out.println("Nao foi possível conenectar com o Banco de dados!!");
-        }
-        
-    } 
-
-    public Connection getConexao() {
-        return conexao;
-    }
-
-    public ConexaoBDPostgres (){
-        
-        usuario = "postgres";
-        senha = "utfpr"; 
-        nomeBanco = "trabalhobd2";
-        url = "jdbc:postgresql://localhost:5432/"+nomeBanco;         
-        
-        try {
-            Class.forName("org.postgresql.Driver");
-            conexao = DriverManager.getConnection(url, usuario, senha);
-            System.out.println("Conexao Realizada Com Sucesso!!");
-
-        } catch (ClassNotFoundException | SQLException e) {
-               System.out.println("Nao foi possível conenectar com o Banco de dados!!");
-        }
-        
-    }
+    private static final String URL = "jdbc:postgresql://localhost:5432/trabalhobd2"; // Nome do banco fixo
+    private static final String USUARIO = "postgres";
+    private static final String SENHA = "postgres";
     
-   
-    public void disconnect() {
-        try {
-            conexao.close();
-            status = false;
-            System.out.println("Fechando a conexão");
-        } catch (SQLException erro) {
-            System.out.println("Erro no fechamento");
+    private Connection conexao;
 
+    // Construtor vazio - conexão não é aberta automaticamente
+    public ConexaoBDPostgres() {
+        this.conexao = null;
+    }
+
+    // Método para conectar ao banco de dados
+    public boolean conectar() {
+        try {
+            // Registrar o driver (opcional em versões mais novas do Java)
+            Class.forName("org.postgresql.Driver");
+            
+            // Estabelecer conexão
+            this.conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            System.out.println("✅ Conexão realizada com sucesso!");
+            return true;
+        } catch (ClassNotFoundException e) {
+            System.out.println("❌ Driver do PostgreSQL não encontrado.");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("❌ Erro ao conectar ao banco de dados.");
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // Método para obter a conexão
+    public Connection getConexao() {
+        return this.conexao;
+    }
+
+    // Método para fechar a conexão
+    public void desconectar() {
+        if (this.conexao != null) {
+            try {
+                this.conexao.close();
+                System.out.println("🔌 Conexão fechada com sucesso.");
+            } catch (SQLException e) {
+                System.out.println("⚠️ Erro ao fechar a conexão.");
+                e.printStackTrace();
+            }
         }
     }
 }
