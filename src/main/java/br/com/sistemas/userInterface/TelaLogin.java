@@ -147,7 +147,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         // Definindo variáveis para a conexão com o banco
         String nomeDoBanco = "BancoTrabalho2";
-        String username = jTextFieldUsername.getText();
+        String username = jTextFieldUsername.getText().toLowerCase();
         String senha = jPasswordFieldSenha.getText();
         
         

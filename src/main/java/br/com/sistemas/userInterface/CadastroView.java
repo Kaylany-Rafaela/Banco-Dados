@@ -165,7 +165,7 @@ public class CadastroView extends javax.swing.JFrame {
         String nomeDoBanco = "BancoTrabalho2";
         String funcao = jTextFieldFuncao.getText();
         String cpf = jTextFieldCPF.getText();
-        String username = jTextFieldUsername.getText();
+        String username = jTextFieldUsername.getText().toLowerCase();
         String senha = jPasswordFieldSenha.getText();
         
             if(username.isBlank() && senha.isBlank()){
