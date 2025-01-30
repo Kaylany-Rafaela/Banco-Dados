@@ -33,7 +33,7 @@ CREATE TABLE tb_produtos (
 
 	-- Tabela de Funcionários
 CREATE TABLE tb_funcionarios (
-    fun_codigo BIGINT PRIMARY KEY,
+    fun_codigo SERIAL PRIMARY KEY,
     fun_nome VARCHAR(45) NOT NULL,
     fun_cpf VARCHAR(45) NOT NULL UNIQUE,
     fun_senha VARCHAR(50) NOT NULL,
@@ -69,6 +69,25 @@ CREATE INDEX idx_fornecedores_descricao ON tb_fornecedores (for_descricao);
 	-- Índice de Buscas para filtrar Produtos com uma faixa de Valor:
 -- Justificativa: Acelera consultas que filtram produtos por faixa de valor, como relatórios financeiros.
 CREATE INDEX idx_produtos_valor ON tb_produtos (pro_valor);
+
+
+-- Criação do user admin e suas permissões
+DROP OWNED by admin;
+DROP user IF EXISTS admin;
+CREATE USER admin WITH PASSWORD 'admin' CREATEROLE;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
+GRANT INSERT ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
+GRANT UPDATE ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
+GRANT USAGE ON tb_funcionarios_fun_codigo_seq to admin;
+GRANT vendedor to admin WITH ADMIN OPTION;
+
+--Criação do grupo vendedor e suas permissões
+DROP OWNED BY vendedor;
+DROP ROLE IF EXISTS vendedor;
+CREATE ROLE vendedor;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO vendedor;
+GRANT INSERT ON ALL TABLES IN SCHEMA public TO vendedor;
+GRANT UPDATE ON ALL TABLES IN SCHEMA public TO vendedor;
 
 -- Função para simular ROLLBACK
 CREATE OR REPLACE FUNCTION teste_rollback()

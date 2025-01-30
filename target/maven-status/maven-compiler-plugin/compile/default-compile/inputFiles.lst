@@ -1,7 +1,6 @@
-C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\login\CadastroView.java
-C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\login\ConexaoBDPostgres.java
-C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\login\TelaEstoque.java
-C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\login\TelaHome.java
-C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\login\TelaLogin.java
-C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\login\TelaVenda.java
-C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\model\UserInfo.java
+C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\model\database\ConexaoBDPostgres.java
+C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\userInterface\CadastroView.java
+C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\userInterface\TelaEstoque.java
+C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\userInterface\TelaHome.java
+C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\userInterface\TelaLogin.java
+C:\Users\Alec\Documents\GitHub\Banco-Dados\src\main\java\br\com\sistemas\userInterface\TelaVenda.java
