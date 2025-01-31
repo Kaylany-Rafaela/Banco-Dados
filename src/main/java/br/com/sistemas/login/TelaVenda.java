@@ -4,6 +4,12 @@
  */
 package br.com.sistemas.login;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Bastos
@@ -16,7 +22,28 @@ public class TelaVenda extends javax.swing.JFrame {
     public TelaVenda() {
         initComponents();
     }
+    public void carregarProdutos(javax.swing.JTable tabela) throws SQLException {
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setRowCount(0);
+        ConexaoBDPostgres conexaoBD = new ConexaoBDPostgres();
 
+        Connection conexao = conexaoBD.getConexao();
+        String sql = "SELECT Cod_produto, NomeProd, quantidade, valor FROM Produto";
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Object[] linha = {
+                    rs.getInt("Cod_produto"),
+                    rs.getString("NomeProd"),
+                    rs.getInt("quantidade"),
+                    rs.getDouble("valor")
+                };
+                modelo.addRow(linha);
+            }
+        }    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

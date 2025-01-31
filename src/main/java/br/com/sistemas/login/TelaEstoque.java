@@ -1,8 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package br.com.sistemas.login;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,7 +19,28 @@ public class TelaEstoque extends javax.swing.JFrame {
     public TelaEstoque() {
         initComponents();
     }
+    public void carregarProdutos(javax.swing.JTable tabela) throws SQLException {
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setRowCount(0);
+        ConexaoBDPostgres conexaoBD = new ConexaoBDPostgres();
 
+        Connection conexao = conexaoBD.getConexao();
+        String sql = "SELECT Cod_produto, NomeProd, quantidade, valor FROM Produto";
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Object[] linha = {
+                    rs.getInt("Cod_produto"),
+                    rs.getString("NomeProd"),
+                    rs.getInt("quantidade"),
+                    rs.getDouble("valor")
+                };
+                modelo.addRow(linha);
+            }
+        }    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,23 +64,12 @@ public class TelaEstoque extends javax.swing.JFrame {
 
         tabelaProdutosEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "ID do Produto", "Descrição", "Quantidade", "Preço Unitário"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jScrollPane1.setViewportView(tabelaProdutosEstoque);
 
         buttonAdicionarRemover.setText("Adicionar/Remover");
@@ -131,6 +144,7 @@ public class TelaEstoque extends javax.swing.JFrame {
 
     private void campoBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBuscarProdutoActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_campoBuscarProdutoActionPerformed
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
