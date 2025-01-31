@@ -13,6 +13,12 @@ CREATE DATABASE "BancoTrabalho2"
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
 
+DROP TABLE IF EXISTS tb_fornecedores cascade;
+DROP TABLE IF EXISTS tb_produtos cascade;
+DROP TABLE IF EXISTS tb_funcionarios cascade;
+DROP TABLE IF EXISTS tb_vendas cascade;
+DROP TABLE IF EXISTS tb_itens cascade;
+
 -- Criação das Tabelas --
 
 	-- Tabela de Fornecedores
@@ -80,6 +86,7 @@ GRANT INSERT ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 GRANT UPDATE ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 GRANT USAGE ON tb_funcionarios_fun_codigo_seq to admin;
 GRANT vendedor to admin WITH ADMIN OPTION;
+GRANT estoquista to admin WITH ADMIN OPTION;
 
 --Criação do grupo vendedor e suas permissões
 DROP OWNED BY vendedor;
@@ -88,6 +95,13 @@ CREATE ROLE vendedor;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO vendedor;
 GRANT INSERT ON ALL TABLES IN SCHEMA public TO vendedor;
 GRANT UPDATE ON ALL TABLES IN SCHEMA public TO vendedor;
+
+DROP OWNED BY estoquista;
+DROP ROLE IF EXISTS estoquista;
+CREATE ROLE estoquista;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO estoquista;
+GRANT INSERT ON ALL TABLES IN SCHEMA public TO estoquista;
+GRANT UPDATE ON ALL TABLES IN SCHEMA public TO estoquista;
 
 -- Função para simular ROLLBACK
 CREATE OR REPLACE FUNCTION teste_rollback()

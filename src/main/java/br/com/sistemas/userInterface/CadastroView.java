@@ -23,9 +23,9 @@ public class CadastroView extends javax.swing.JFrame {
     public CadastroView() {
         initComponents();
     }
-    
-    ConexaoBDPostgres conexao = new ConexaoBDPostgres();
 
+    ConexaoBDPostgres conexao = new ConexaoBDPostgres();
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,23 +35,37 @@ public class CadastroView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelNome = new javax.swing.JLabel();
+        jTextFieldUsername = new javax.swing.JTextField();
         jLabelSenha = new javax.swing.JLabel();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
         jButtonSair = new javax.swing.JButton();
         jButtonCadastrar = new javax.swing.JButton();
-        jLabelFuncao = new javax.swing.JLabel();
-        jTextFieldFuncao = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextFieldCPF = new javax.swing.JTextField();
         jLabelCPF = new javax.swing.JLabel();
-        jTextFieldUsername = new javax.swing.JTextField();
-        jLabelUsername = new javax.swing.JLabel();
+        jTextFieldCPF = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBoxFuncao = new javax.swing.JComboBox<>();
+        jLabelErroCPF = new javax.swing.JLabel();
+        jLabelErroNome = new javax.swing.JLabel();
+        jLabelErroSenha = new javax.swing.JLabel();
+        jLabelError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(600, 400));
         setMinimumSize(new java.awt.Dimension(600, 400));
         setUndecorated(true);
         setResizable(false);
+
+        jLabelNome.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabelNome.setText("Nome");
+
+        jTextFieldUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldUsernameActionPerformed(evt);
+            }
+        });
 
         jLabelSenha.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabelSenha.setText("Senha");
@@ -71,17 +85,8 @@ public class CadastroView extends javax.swing.JFrame {
             }
         });
 
-        jLabelFuncao.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabelFuncao.setText("Função");
-
-        jTextFieldFuncao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldFuncaoActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel4.setText("Cadastro Novo Usuario");
+        jLabelCPF.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabelCPF.setText("CPF");
 
         jTextFieldCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,45 +94,64 @@ public class CadastroView extends javax.swing.JFrame {
             }
         });
 
-        jLabelCPF.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabelCPF.setText("CPF");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel4.setText("Cadastro Novo Usuario");
 
-        jTextFieldUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUsernameActionPerformed(evt);
-            }
-        });
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel5.setText("Função");
 
-        jLabelUsername.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabelUsername.setText("Username");
+        jComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "Estoquista" }));
+
+        jLabelErroCPF.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+
+        jLabelErroNome.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+
+        jLabelErroSenha.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSair))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelFuncao)
-                            .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSenha)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jButtonCadastrar))
-                            .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCPF)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelUsername)))
+                            .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelNome)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelErroNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelSenha)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelErroSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBoxFuncao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelCPF)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelErroCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(135, 135, 135)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(jButtonCadastrar)))
                 .addGap(0, 204, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonSair))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,24 +160,31 @@ public class CadastroView extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelFuncao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelCPF)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBoxFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCPF)
+                    .addComponent(jLabelErroCPF))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelUsername)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNome)
+                    .addComponent(jLabelErroNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelSenha)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSenha)
+                    .addComponent(jLabelErroSenha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addGap(51, 51, 51)
+                .addComponent(jLabelError))
         );
 
         setSize(new java.awt.Dimension(600, 429));
@@ -161,78 +192,72 @@ public class CadastroView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        // TODO add your handling code here:
+        // Coleta funcao, cpf, nome e senha das caixas de texto da interface
         String nomeDoBanco = "BancoTrabalho2";
-        String funcao = jTextFieldFuncao.getText();
+        String funcao = ((String)jComboBoxFuncao.getSelectedItem()).toLowerCase();
         String cpf = jTextFieldCPF.getText();
         String username = jTextFieldUsername.getText().toLowerCase();
         String senha = jPasswordFieldSenha.getText();
-        
-            if(username.isBlank() && senha.isBlank()){
-                JOptionPane.showMessageDialog(null, "Erro: insira um nome de usuário e senha");
-            } else if(username.isBlank()){
-                JOptionPane.showMessageDialog(null, "Erro: insira um nome de usuário");
-            } else if(senha.isBlank()){
-                JOptionPane.showMessageDialog(null, "Erro: insira uma senha");
+        // Verificacao de nulo para toda caixa de texto
+            if(cpf.isBlank()){
+                jLabelErroCPF.setText("Não pode ser nulo");
             } else{
+                jLabelErroCPF.setText("");
+            }
+            if(username.isBlank()){
+                 jLabelErroNome.setText("Não pode ser nulo");
+            } else{
+                jLabelErroNome.setText("");
+            }
+            if(senha.isBlank()){
+                 jLabelErroSenha.setText("Não pode ser nulo");
+            } else{
+                jLabelErroSenha.setText("");
+            }
+            
+            // Caso nenhum campo for nulo, execute:
+            if(!cpf.isBlank() && !username.isBlank() && !senha.isBlank()){
                 //log-in como admin para registrar usuários
                 try {
                     conexao.conectar("admin", "admin", nomeDoBanco);
                     PreparedStatement ps = null;
                     String sql = null; 
-                    // Cria o usuário e dá as permissões de vendedor pra ele
-                    sql = "CREATE USER " + username + " WITH PASSWORD '" + senha + "';"
-                            + "GRANT vendedor to " + username + ";"
+                    
+                    // Cria o usuário e dá as permissões da funcao (role) pra ele.
+                    // Prefixada e sufixada a letra u no nome do usuário pois o postgre não aceita usuários completamente numéricos
+                    sql = "CREATE USER u" + cpf + "u WITH PASSWORD '" + senha + "';"
+                            + "GRANT " + funcao + " to u" + cpf + "u;"
                             + "INSERT into tb_funcionarios(fun_funcao, fun_cpf, fun_nome, fun_senha) values  ('" 
                             + funcao + "', " + cpf + ", '" + username + "', '" + senha + "');";        
                     ps = conexao.getConexao().prepareStatement(sql);
                     ps.executeUpdate();
+                    
+                    // Encerra a transação e mostra mensagam de sucesso
                     ps.close();
-                    JOptionPane.showMessageDialog(null, "Registrado usuário " + username + " com sucesso!");
-                    dispose();
+                    JOptionPane.showMessageDialog(null, "Registrado usuário " + cpf + " (" + username + ")" + " com sucesso!");
+                    
+                    //Desconecta e fecha
+                    conexao.disconnect();
+                    dispose(); // Auto-fecha janela de cadastro;
                 } catch (SQLException e){
-                    JOptionPane.showMessageDialog(null, e.getMessage());
+                    jLabelError.setText(e.getMessage()); // Mostra mensagem de erro na janela de cadastro
                 }               
-        }     
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
-
-    private void jTextFieldFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFuncaoActionPerformed
+}
+    private void jTextFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFuncaoActionPerformed
+    }//GEN-LAST:event_jTextFieldCPFActionPerformed
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
-    private void jTextFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCPFActionPerformed
-
     private void jTextFieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUsernameActionPerformed
 
-    public JPasswordField getjPasswordFieldSenha() {
-        return jPasswordFieldSenha;
-    }
-
-    public void setjPasswordFieldSenha(JPasswordField jPasswordFieldSenha) {
-        this.jPasswordFieldSenha = jPasswordFieldSenha;
-    }
-
-    public JTextField getjTextFieldNome() {
-        return jTextFieldFuncao;
-    }
-
-    public void setjTextFieldNome(JTextField jTextFieldNome) {
-        this.jTextFieldFuncao = jTextFieldNome;
-    }
-
-    
-    /**
-     * @param args the command line arguments
-     */
+    // Para teste
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -267,14 +292,18 @@ public class CadastroView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonSair;
+    private javax.swing.JComboBox<String> jComboBoxFuncao;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelCPF;
-    private javax.swing.JLabel jLabelFuncao;
+    private javax.swing.JLabel jLabelErroCPF;
+    private javax.swing.JLabel jLabelErroNome;
+    private javax.swing.JLabel jLabelErroSenha;
+    private javax.swing.JLabel jLabelError;
+    private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelSenha;
-    private javax.swing.JLabel jLabelUsername;
     private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JTextField jTextFieldCPF;
-    private javax.swing.JTextField jTextFieldFuncao;
     private javax.swing.JTextField jTextFieldUsername;
     // End of variables declaration//GEN-END:variables
 }
