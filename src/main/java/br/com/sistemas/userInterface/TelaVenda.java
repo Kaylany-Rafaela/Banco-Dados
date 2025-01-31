@@ -5,7 +5,6 @@
 package br.com.sistemas.userInterface;
 
 import br.com.sistemas.model.database.ConexaoBDPostgres;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,18 +19,19 @@ public class TelaVenda extends javax.swing.JFrame {
     /**
      * Creates new form TelaInicial
      */
-    public TelaVenda() {
+    
+    ConexaoBDPostgres conexao;
+    
+    public TelaVenda(ConexaoBDPostgres conexao) {
+        this.conexao = conexao;
         initComponents();
     }
     public void carregarProdutos(javax.swing.JTable tabela) throws SQLException {
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
         modelo.setRowCount(0);
-        ConexaoBDPostgres conexaoBD = new ConexaoBDPostgres();
-
-        Connection conexao = conexaoBD.getConexao();
         String sql = "SELECT Cod_produto, NomeProd, quantidade, valor FROM Produto";
 
-        try (PreparedStatement stmt = conexao.prepareStatement(sql);
+        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
@@ -329,42 +329,6 @@ public class TelaVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_buttonSairActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaVenda().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;

@@ -20,11 +20,10 @@ public class CadastroView extends javax.swing.JFrame {
     /**
      * Creates new form TelaLogin
      */
+    
     public CadastroView() {
         initComponents();
     }
-
-    ConexaoBDPostgres conexao = new ConexaoBDPostgres();
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -193,11 +192,13 @@ public class CadastroView extends javax.swing.JFrame {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // Coleta funcao, cpf, nome e senha das caixas de texto da interface
+        
         String nomeDoBanco = "BancoTrabalho2";
         String funcao = ((String)jComboBoxFuncao.getSelectedItem()).toLowerCase();
         String cpf = jTextFieldCPF.getText();
         String username = jTextFieldUsername.getText().toLowerCase();
         String senha = jPasswordFieldSenha.getText();
+        ConexaoBDPostgres conexao = new ConexaoBDPostgres("admin", "admin", nomeDoBanco);
         // Verificacao de nulo para toda caixa de texto
             if(cpf.isBlank()){
                 jLabelErroCPF.setText("Não pode ser nulo");
@@ -219,7 +220,7 @@ public class CadastroView extends javax.swing.JFrame {
             if(!cpf.isBlank() && !username.isBlank() && !senha.isBlank()){
                 //log-in como admin para registrar usuários
                 try {
-                    conexao.conectar("admin", "admin", nomeDoBanco);
+                    conexao.conectar();
                     PreparedStatement ps = null;
                     String sql = null; 
                     

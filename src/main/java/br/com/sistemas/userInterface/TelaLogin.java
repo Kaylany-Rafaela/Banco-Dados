@@ -19,7 +19,7 @@ public class TelaLogin extends javax.swing.JFrame {
         initComponents();
     }
     
-    ConexaoBDPostgres conexao = new ConexaoBDPostgres();
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -155,28 +155,28 @@ public class TelaLogin extends javax.swing.JFrame {
         String cpf = jTextFieldCPF.getText();
         String senha = jPasswordFieldSenha.getText();
         
-        
+        ConexaoBDPostgres conexao = new ConexaoBDPostgres(cpf, senha, nomeDoBanco);        
         // Tenta conectar ao banco com os dados inseridos pelo usuário
-        Boolean connectionStatus = conexao.conectar(cpf, senha, nomeDoBanco);
+        Boolean connectionStatus = conexao.conectar();
         if (connectionStatus){
             // Se admin, abre tela Home
             if(cpf.equals("admin") || cpf.equals("postgres")){
-                TelaHome telaHome = new TelaHome();
+                TelaHome telaHome = new TelaHome(conexao);
                 telaHome.setVisible(true);
             } else {
                 // Senão, busca no banco pela função desse usuário
-                String funcao = conexao.getFuncao(cpf);
+                String cargo = conexao.getCargo(cpf);
                 // Se vendedor, abre tela Venda
-                if(funcao.equals("vendedor")){
-                   TelaVenda telaVenda = new TelaVenda();
+                if(cargo.equals("vendedor")){
+                   TelaVenda telaVenda = new TelaVenda(conexao);
                    telaVenda.setVisible(true);
                 //Se estoquista, abre tela Estoque
-                } else if(funcao.equals("estoquista")){
-                   TelaEstoque telaEstoque = new TelaEstoque();
+                } else if(cargo.equals("estoquista")){
+                   TelaEstoque telaEstoque = new TelaEstoque(conexao);
                    telaEstoque.setVisible(true);
                 } else{
                     // Senão mostra nulo em uma caixa de texto escondida
-                    jLabelTeste.setText(funcao); 
+                    jLabelTeste.setText(cargo); 
                 }
             }  
         }
@@ -238,10 +238,6 @@ public class TelaLogin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new TelaLogin().setVisible(true);
         });
-    }
-
-    public ConexaoBDPostgres getMyConnection(){
-        return conexao;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

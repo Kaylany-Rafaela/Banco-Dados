@@ -12,12 +12,14 @@ import java.sql.PreparedStatement;
  *
  * @author Bastos
  */
+    
 public class AdicionarProduto extends javax.swing.JFrame {
-
     /**
      * Creates new form AdicionarProduto
      */
-    public AdicionarProduto() {
+    ConexaoBDPostgres conexaoBD;
+    public AdicionarProduto(ConexaoBDPostgres conexaoBD) {
+    this.conexaoBD = conexaoBD;
         initComponents();
     }
 
@@ -133,12 +135,6 @@ public class AdicionarProduto extends javax.swing.JFrame {
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
     
     // Criando um objeto da classe de conexão
-    ConexaoBDPostgres conexaoBD = new ConexaoBDPostgres();
-    
-    if (!conexaoBD.conectar("abc", "abc", "abc")) {
-        System.out.println("Erro ao conectar com o banco.");
-        return;
-    }
 
     Connection conexao = conexaoBD.getConexao();
 
@@ -169,7 +165,7 @@ public class AdicionarProduto extends javax.swing.JFrame {
         System.out.println("✅ Produto inserido com sucesso! Linhas afetadas: " + linhasAfetadas);
 
     } catch (Exception e) {
-        System.out.println("Erro: falha ao adicionar produto!");
+        System.out.println(e.getMessage());
     } finally {
         // Fechar conexão após o uso
         conexaoBD.disconnect();
@@ -192,41 +188,6 @@ public class AdicionarProduto extends javax.swing.JFrame {
     private void descricaoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricaoProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_descricaoProdutoActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdicionarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdicionarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdicionarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdicionarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdicionarProduto().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;

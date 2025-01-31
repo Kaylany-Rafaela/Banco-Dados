@@ -85,8 +85,6 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 GRANT INSERT ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 GRANT UPDATE ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 GRANT USAGE ON tb_funcionarios_fun_codigo_seq to admin;
-GRANT vendedor to admin WITH ADMIN OPTION;
-GRANT estoquista to admin WITH ADMIN OPTION;
 
 --Criação do grupo vendedor e suas permissões
 DROP OWNED BY vendedor;
@@ -102,6 +100,9 @@ CREATE ROLE estoquista;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO estoquista;
 GRANT INSERT ON ALL TABLES IN SCHEMA public TO estoquista;
 GRANT UPDATE ON ALL TABLES IN SCHEMA public TO estoquista;
+
+GRANT vendedor to admin WITH ADMIN OPTION;
+GRANT estoquista to admin WITH ADMIN OPTION;
 
 -- Função para simular ROLLBACK
 CREATE OR REPLACE FUNCTION teste_rollback()
