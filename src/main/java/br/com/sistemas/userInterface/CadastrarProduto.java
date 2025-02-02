@@ -13,12 +13,12 @@ import java.sql.PreparedStatement;
  * @author Bastos
  */
     
-public class AdicionarProduto extends javax.swing.JFrame {
+public class CadastrarProduto extends javax.swing.JFrame {
     /**
-     * Creates new form AdicionarProduto
+     * Creates new form CadastrarProduto
      */
     ConexaoBDPostgres conexaoBD;
-    public AdicionarProduto(ConexaoBDPostgres conexaoBD) {
+    public CadastrarProduto(ConexaoBDPostgres conexaoBD) {
     this.conexaoBD = conexaoBD;
         initComponents();
     }
@@ -46,7 +46,7 @@ public class AdicionarProduto extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
-        jLabel1.setText("ID Produto");
+        jLabel1.setText("Quantidade");
 
         idProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,7 +54,7 @@ public class AdicionarProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Quantidade");
+        jLabel2.setText("Preço");
 
         quantidadeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +62,7 @@ public class AdicionarProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Preço");
+        jLabel3.setText("Descrição");
 
         precoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +70,7 @@ public class AdicionarProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Descrição");
+        jLabel5.setText("Fornecedor");
 
         descricaoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

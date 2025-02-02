@@ -53,7 +53,6 @@ public class TelaEstoque extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProdutosEstoque = new javax.swing.JTable();
         buttonAdicionarRemover = new javax.swing.JButton();
-        buttonGerarRelatorio = new javax.swing.JButton();
         buttonBuscar = new javax.swing.JButton();
         campoBuscarProduto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -67,9 +66,17 @@ public class TelaEstoque extends javax.swing.JFrame {
 
             },
             new String [] {
-
+                "Código", "Descrição", "Quantidade", "Valor", "Fornecedor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tabelaProdutosEstoque);
 
         buttonAdicionarRemover.setText("Adicionar/Remover");
@@ -78,8 +85,6 @@ public class TelaEstoque extends javax.swing.JFrame {
                 buttonAdicionarRemoverActionPerformed(evt);
             }
         });
-
-        buttonGerarRelatorio.setText("Gerar Relatório");
 
         buttonBuscar.setText("Buscar");
         buttonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,20 +109,14 @@ public class TelaEstoque extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonAdicionarRemover, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(buttonGerarRelatorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(campoBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonBuscar)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(campoBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonBuscar)
+                        .addGap(97, 97, 97)
+                        .addComponent(buttonAdicionarRemover, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -128,14 +127,10 @@ public class TelaEstoque extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBuscar))
+                    .addComponent(buttonBuscar)
+                    .addComponent(buttonAdicionarRemover))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonAdicionarRemover)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonGerarRelatorio))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -152,14 +147,13 @@ public class TelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     private void buttonAdicionarRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarRemoverActionPerformed
-        AdicionarProduto telaAdicionarProduto = new AdicionarProduto(conexao);
+        CadastrarProduto telaAdicionarProduto = new CadastrarProduto(conexao);
         telaAdicionarProduto.setVisible(true);
     }//GEN-LAST:event_buttonAdicionarRemoverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionarRemover;
     private javax.swing.JButton buttonBuscar;
-    private javax.swing.JButton buttonGerarRelatorio;
     private javax.swing.JTextField campoBuscarProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
