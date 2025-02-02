@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS tb_itens cascade;
 
 	-- Tabela de Fornecedores
 CREATE TABLE tb_fornecedores (
-    for_codigo BIGINT PRIMARY KEY,
+    for_codigo SERIAL PRIMARY KEY,
     for_descricao VARCHAR(45) NOT NULL
 );
 
 	-- Tabela de Produtos
 CREATE TABLE tb_produtos (
-    pro_codigo BIGINT PRIMARY KEY,
+    pro_codigo SERIAL PRIMARY KEY,
     pro_descricao VARCHAR(45) NOT NULL,
     pro_valor DECIMAL(10, 2) NOT NULL,
     pro_quantidade INT NOT NULL,

@@ -1,6 +1,7 @@
 C:\Users\user\Desktop\Banco-Dados\src\main\java\br\com\sistemas\model\database\ConexaoBDPostgres.java
-C:\Users\user\Desktop\Banco-Dados\src\main\java\br\com\sistemas\userInterface\AdicionarProduto.java
-C:\Users\user\Desktop\Banco-Dados\src\main\java\br\com\sistemas\userInterface\CadastroView.java
+C:\Users\user\Desktop\Banco-Dados\src\main\java\br\com\sistemas\userInterface\TelaCadastroFornecedor.java
+C:\Users\user\Desktop\Banco-Dados\src\main\java\br\com\sistemas\userInterface\TelaCadastroProduto.java
+C:\Users\user\Desktop\Banco-Dados\src\main\java\br\com\sistemas\userInterface\TelaCadastroUsuario.java
 C:\Users\user\Desktop\Banco-Dados\src\main\java\br\com\sistemas\userInterface\TelaEstoque.java
 C:\Users\user\Desktop\Banco-Dados\src\main\java\br\com\sistemas\userInterface\TelaHome.java
 C:\Users\user\Desktop\Banco-Dados\src\main\java\br\com\sistemas\userInterface\TelaLogin.java

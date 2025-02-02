@@ -147,7 +147,7 @@ public class TelaEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     private void buttonAdicionarRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarRemoverActionPerformed
-        CadastrarProduto telaAdicionarProduto = new CadastrarProduto(conexao);
+        TelaCadastroProduto telaAdicionarProduto = new TelaCadastroProduto(conexao);
         telaAdicionarProduto.setVisible(true);
     }//GEN-LAST:event_buttonAdicionarRemoverActionPerformed
 

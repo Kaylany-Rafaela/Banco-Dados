@@ -15,13 +15,16 @@ import javax.swing.JTextField;
  *
  * @author Larissa
  */
-public class CadastroUsuario extends javax.swing.JFrame {
+public class TelaCadastroUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaLogin
      */
     
-    public CadastroUsuario() {
+    ConexaoBDPostgres conexao;
+    
+    public TelaCadastroUsuario(ConexaoBDPostgres conexao) {
+        this.conexao = conexao;
         initComponents();
     }
     
@@ -192,13 +195,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         // Coleta funcao, cpf, nome e senha das caixas de texto da interface
-        
-        String nomeDoBanco = "BancoTrabalho2";
         String funcao = ((String)jComboBoxFuncao.getSelectedItem()).toLowerCase();
         String cpf = jTextFieldCPF.getText();
         String username = jTextFieldUsername.getText().toLowerCase();
         String senha = jPasswordFieldSenha.getText();
-        ConexaoBDPostgres conexao = new ConexaoBDPostgres("admin", "admin", nomeDoBanco);
         // Verificacao de nulo para toda caixa de texto
             if(cpf.isBlank()){
                 jLabelErroCPF.setText("Não pode ser nulo");
@@ -257,40 +257,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private void jTextFieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUsernameActionPerformed
-
-    // Para teste
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new CadastroUsuario().setVisible(true);
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;

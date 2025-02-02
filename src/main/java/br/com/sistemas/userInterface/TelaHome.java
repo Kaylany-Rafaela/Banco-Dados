@@ -39,8 +39,10 @@ public class TelaHome extends javax.swing.JFrame {
         buttonEstoque = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
-        menuBackup = new javax.swing.JMenuItem();
+        jMenuItemBackup = new javax.swing.JMenuItem();
         menuCadastrar = new javax.swing.JMenu();
+        jMenuItemCadastrarUsuario = new javax.swing.JMenuItem();
+        jMenuItemCadastrarFornecedor = new javax.swing.JMenuItem();
         menuLogout = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,17 +75,34 @@ public class TelaHome extends javax.swing.JFrame {
 
         menuArquivo.setText("Arquivo");
 
-        menuBackup.setText("Backup");
-        menuBackup.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemBackup.setText("Realizar Backup");
+        jMenuItemBackup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuBackupActionPerformed(evt);
+                jMenuItemBackupActionPerformed(evt);
             }
         });
-        menuArquivo.add(menuBackup);
+        menuArquivo.add(jMenuItemBackup);
 
         jMenuBar1.add(menuArquivo);
 
         menuCadastrar.setText("Cadastrar");
+
+        jMenuItemCadastrarUsuario.setText("Cadastrar Usuario");
+        jMenuItemCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadastrarUsuarioActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(jMenuItemCadastrarUsuario);
+
+        jMenuItemCadastrarFornecedor.setText("Cadastrar Fornecedor");
+        jMenuItemCadastrarFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadastrarFornecedorActionPerformed(evt);
+            }
+        });
+        menuCadastrar.add(jMenuItemCadastrarFornecedor);
+
         jMenuBar1.add(menuCadastrar);
 
         menuLogout.setText("Logout");
@@ -141,22 +160,34 @@ public class TelaHome extends javax.swing.JFrame {
 
     private void buttonVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVendasActionPerformed
         // TODO add your handling code here:
-        TelaVenda abreTelaVenda = new TelaVenda(conexao);
-        abreTelaVenda.setVisible(true);
+        TelaVenda telaVenda = new TelaVenda(conexao);
+        telaVenda.setVisible(true);
     }//GEN-LAST:event_buttonVendasActionPerformed
 
-    private void menuBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBackupActionPerformed
+    private void jMenuItemBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBackupActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menuBackupActionPerformed
+    }//GEN-LAST:event_jMenuItemBackupActionPerformed
+
+    private void jMenuItemCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarUsuarioActionPerformed
+        TelaCadastroUsuario telaCadastroUsuario = new TelaCadastroUsuario(conexao);
+        telaCadastroUsuario.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCadastrarUsuarioActionPerformed
+
+    private void jMenuItemCadastrarFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastrarFornecedorActionPerformed
+        TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor(conexao);
+        telaCadastroFornecedor.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCadastrarFornecedorActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEstoque;
     private javax.swing.JButton buttonVendas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemBackup;
+    private javax.swing.JMenuItem jMenuItemCadastrarFornecedor;
+    private javax.swing.JMenuItem jMenuItemCadastrarUsuario;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu menuArquivo;
-    private javax.swing.JMenuItem menuBackup;
     private javax.swing.JMenu menuCadastrar;
     private javax.swing.JMenu menuLogout;
     private javax.swing.JTable tabelaMostrarFuncionarios;

@@ -124,9 +124,6 @@ public class TelaLogin extends javax.swing.JFrame {
                 } else if(cargo.equals("estoquista")){
                    TelaEstoque telaEstoque = new TelaEstoque(conexao);
                    telaEstoque.setVisible(true);
-                } else{
-                    // Senão mostra nulo em uma caixa de texto escondida
-                    jLabelTeste.setText(cargo); 
                 }
             }  
         }

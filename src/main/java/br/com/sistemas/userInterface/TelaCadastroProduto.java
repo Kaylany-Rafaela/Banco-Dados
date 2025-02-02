@@ -13,10 +13,10 @@ import java.sql.PreparedStatement;
  * @author Bastos
  */
     
-public class CadastrarProduto extends javax.swing.JFrame {
+public class TelaCadastroProduto extends javax.swing.JFrame {
 
     ConexaoBDPostgres conexaoBD;
-    public CadastrarProduto(ConexaoBDPostgres conexaoBD) {
+    public TelaCadastroProduto(ConexaoBDPostgres conexaoBD) {
     this.conexaoBD = conexaoBD;
         initComponents();
     }
@@ -41,7 +41,6 @@ public class CadastrarProduto extends javax.swing.JFrame {
         buttonAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         jLabel1.setText("Quantidade");
