@@ -21,7 +21,7 @@ public class ConexaoBDPostgres {
     public ConexaoBDPostgres(String cpf, String senha, String nomeBanco){
         this.cpf = cpf;
         this.senha = senha;
-        this.nomeBanco = trabalhoBD2;
+        this.nomeBanco = nomeBanco;
     }
     
     public boolean conectar() {
