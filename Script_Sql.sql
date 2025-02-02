@@ -90,16 +90,15 @@ GRANT USAGE ON tb_funcionarios_fun_codigo_seq to admin;
 DROP OWNED BY vendedor;
 DROP ROLE IF EXISTS vendedor;
 CREATE ROLE vendedor;
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO vendedor;
-GRANT INSERT ON ALL TABLES IN SCHEMA public TO vendedor;
-GRANT UPDATE ON ALL TABLES IN SCHEMA public TO vendedor;
+GRANT SELECT ON tb_produtos TO vendedor;
+GRANT UPDATE ON tb_produtos TO vendedor;
 
 DROP OWNED BY estoquista;
 DROP ROLE IF EXISTS estoquista;
 CREATE ROLE estoquista;
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO estoquista;
-GRANT INSERT ON ALL TABLES IN SCHEMA public TO estoquista;
-GRANT UPDATE ON ALL TABLES IN SCHEMA public TO estoquista;
+GRANT INSERT ON tb_produtos TO estoquista;
+GRANT SELECT ON tb_produtos TO estoquista;
+GRANT UPDATE ON tb_produtos TO estoquista;
 
 GRANT vendedor to admin WITH ADMIN OPTION;
 GRANT estoquista to admin WITH ADMIN OPTION;
