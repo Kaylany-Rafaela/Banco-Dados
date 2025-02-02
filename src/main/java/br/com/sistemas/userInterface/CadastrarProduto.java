@@ -14,9 +14,7 @@ import java.sql.PreparedStatement;
  */
     
 public class CadastrarProduto extends javax.swing.JFrame {
-    /**
-     * Creates new form CadastrarProduto
-     */
+
     ConexaoBDPostgres conexaoBD;
     public CadastrarProduto(ConexaoBDPostgres conexaoBD) {
     this.conexaoBD = conexaoBD;

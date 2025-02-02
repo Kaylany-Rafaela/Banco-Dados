@@ -71,14 +71,6 @@ public class TelaVenda extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         mostrarSubtotal = new javax.swing.JTextField();
         buttonConcluirVenda = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        nomeOperador = new javax.swing.JTextField();
-        buttonSair = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        menuArquivos = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        menuEstoque = new javax.swing.JMenu();
-        menuSair = new javax.swing.JMenu();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -120,7 +112,6 @@ public class TelaVenda extends javax.swing.JFrame {
         menuBar1.add(menu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         jPanel1.setRequestFocusEnabled(false);
@@ -134,9 +125,17 @@ public class TelaVenda extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome", "Categoria", "Quantidade", "Preço"
+                "Descrição", "Categoria", "Quantidade", "Preço"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tabelaMostrarProdutosVendas);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -149,7 +148,7 @@ public class TelaVenda extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Código do Produto");
+        jLabel3.setText("Código do Produto:");
 
         textoCodigoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,21 +173,6 @@ public class TelaVenda extends javax.swing.JFrame {
 
         buttonConcluirVenda.setText("Concluir");
 
-        jLabel2.setText("Operador");
-
-        nomeOperador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomeOperadorActionPerformed(evt);
-            }
-        });
-
-        buttonSair.setText("Sair");
-        buttonSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSairActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -207,20 +191,15 @@ public class TelaVenda extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel3)
-                                        .addGap(0, 59, Short.MAX_VALUE))
+                                        .addGap(0, 56, Short.MAX_VALUE))
                                     .addComponent(textoCodigoProduto, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(mostrarSubtotal, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGap(0, 80, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(buttonConcluirVenda)
-                                            .addComponent(jLabel2)
                                             .addComponent(seletorDeQuantidadeDeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(buttonAdicionar)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(buttonSair)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(nomeOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(buttonAdicionar))))
                                 .addGap(29, 29, 29))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,13 +208,7 @@ public class TelaVenda extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSair))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -258,31 +231,6 @@ public class TelaVenda extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        menuArquivos.setText("Arquivos");
-        menuArquivos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuArquivosActionPerformed(evt);
-            }
-        });
-
-        jMenu4.setText("Backup");
-        menuArquivos.add(jMenu4);
-
-        jMenuBar1.add(menuArquivos);
-
-        menuEstoque.setText("Estoque");
-        menuEstoque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuEstoqueActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(menuEstoque);
-
-        menuSair.setText("Sair");
-        jMenuBar1.add(menuSair);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -297,22 +245,6 @@ public class TelaVenda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textoCodigoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCodigoProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoCodigoProdutoActionPerformed
-
-    private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAdicionarActionPerformed
-
-    private void seletorDeQuantidadeDeVendaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_seletorDeQuantidadeDeVendaStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_seletorDeQuantidadeDeVendaStateChanged
-
-    private void mostrarSubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarSubtotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mostrarSubtotalActionPerformed
-
     private void nomeOperadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeOperadorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeOperadorActionPerformed
@@ -325,34 +257,37 @@ public class TelaVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuEstoqueActionPerformed
 
-    private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
+    private void mostrarSubtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarSubtotalActionPerformed
         // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_buttonSairActionPerformed
+    }//GEN-LAST:event_mostrarSubtotalActionPerformed
+
+    private void seletorDeQuantidadeDeVendaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_seletorDeQuantidadeDeVendaStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seletorDeQuantidadeDeVendaStateChanged
+
+    private void textoCodigoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoCodigoProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoCodigoProdutoActionPerformed
+
+    private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonAdicionarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
     private javax.swing.JButton buttonConcluirVenda;
-    private javax.swing.JButton buttonSair;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrame3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
-    private javax.swing.JMenu menuArquivos;
     private java.awt.MenuBar menuBar1;
-    private javax.swing.JMenu menuEstoque;
-    private javax.swing.JMenu menuSair;
     private javax.swing.JTextField mostrarSubtotal;
-    private javax.swing.JTextField nomeOperador;
     private javax.swing.JSpinner seletorDeQuantidadeDeVenda;
     private javax.swing.JTable tabelaMostrarProdutosVendas;
     private javax.swing.JTextField textoCodigoProduto;
