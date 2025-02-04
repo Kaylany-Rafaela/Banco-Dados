@@ -85,6 +85,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 GRANT INSERT ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 GRANT UPDATE ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 GRANT USAGE ON tb_funcionarios_fun_codigo_seq to admin;
+GRANT USAGE ON tb_fornecedores_for_codigo_seq to admin;
 
 --Criação do grupo vendedor e suas permissões
 DROP OWNED BY vendedor;
