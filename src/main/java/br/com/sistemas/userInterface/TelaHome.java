@@ -34,15 +34,17 @@ public class TelaHome extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaMostrarFuncionarios = new javax.swing.JTable();
-        jLabelMovimentação = new javax.swing.JLabel();
-        buttonVendas = new javax.swing.JButton();
-        buttonEstoque = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabelFornecedores = new javax.swing.JLabel();
-        buttonCadastrarFornecedores = new javax.swing.JButton();
-        buttonCadastrarFuncionarios = new javax.swing.JButton();
-        jLabelCadastrar = new javax.swing.JLabel();
+        jLabelFornecedores1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuMovimentacao = new javax.swing.JMenu();
+        jMenuItemVendas = new javax.swing.JMenuItem();
+        jMenuItemEstoque = new javax.swing.JMenuItem();
+        jMenuCadastrar = new javax.swing.JMenu();
+        jMenuItemFuncionarios = new javax.swing.JMenuItem();
+        jMenuItemFornecedores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,22 +57,6 @@ public class TelaHome extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tabelaMostrarFuncionarios);
-
-        jLabelMovimentação.setText("Movimentação:");
-
-        buttonVendas.setText("Vendas");
-        buttonVendas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVendasActionPerformed(evt);
-            }
-        });
-
-        buttonEstoque.setText("Estoque");
-        buttonEstoque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEstoqueActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,21 +81,49 @@ public class TelaHome extends javax.swing.JFrame {
 
         jLabelFornecedores.setText("Fornecedores:");
 
-        buttonCadastrarFornecedores.setText("Fornecedores");
-        buttonCadastrarFornecedores.addActionListener(new java.awt.event.ActionListener() {
+        jLabelFornecedores1.setText("Funcionários");
+
+        jMenuMovimentacao.setText("Movimentação");
+
+        jMenuItemVendas.setText("Vendas");
+        jMenuItemVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCadastrarFornecedoresActionPerformed(evt);
+                jMenuItemVendasActionPerformed(evt);
             }
         });
+        jMenuMovimentacao.add(jMenuItemVendas);
 
-        buttonCadastrarFuncionarios.setText("Funcionários");
-        buttonCadastrarFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemEstoque.setText("Estoque");
+        jMenuItemEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCadastrarFuncionariosActionPerformed(evt);
+                jMenuItemEstoqueActionPerformed(evt);
             }
         });
+        jMenuMovimentacao.add(jMenuItemEstoque);
 
-        jLabelCadastrar.setText("Cadastrar:");
+        jMenuBar1.add(jMenuMovimentacao);
+
+        jMenuCadastrar.setText("Cadastrar");
+
+        jMenuItemFuncionarios.setText("Funcionários");
+        jMenuItemFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFuncionariosActionPerformed(evt);
+            }
+        });
+        jMenuCadastrar.add(jMenuItemFuncionarios);
+
+        jMenuItemFornecedores.setText("Fornecedores");
+        jMenuItemFornecedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFornecedoresActionPerformed(evt);
+            }
+        });
+        jMenuCadastrar.add(jMenuItemFornecedores);
+
+        jMenuBar1.add(jMenuCadastrar);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,20 +133,7 @@ public class TelaHome extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonVendas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonEstoque))
-                            .addComponent(jLabelMovimentação))
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCadastrar)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonCadastrarFuncionarios)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonCadastrarFornecedores)))))
+                    .addComponent(jLabelFornecedores1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelFornecedores)
@@ -141,56 +142,51 @@ public class TelaHome extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelMovimentação)
-                    .addComponent(jLabelCadastrar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonEstoque)
-                    .addComponent(buttonVendas)
                     .addComponent(jLabelFornecedores)
-                    .addComponent(buttonCadastrarFuncionarios)
-                    .addComponent(buttonCadastrarFornecedores))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))
+                    .addComponent(jLabelFornecedores1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEstoqueActionPerformed
-        // TODO add your handling code here:
-        TelaEstoque telaDoEstoque = new TelaEstoque(conexao);
-        telaDoEstoque.setVisible(true);
-    }//GEN-LAST:event_buttonEstoqueActionPerformed
-
-    private void buttonVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVendasActionPerformed
-        // TODO add your handling code here:
+    private void jMenuItemVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVendasActionPerformed
         TelaVenda telaVenda = new TelaVenda(conexao);
         telaVenda.setVisible(true);
-    }//GEN-LAST:event_buttonVendasActionPerformed
+    }//GEN-LAST:event_jMenuItemVendasActionPerformed
 
-    private void buttonCadastrarFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarFornecedoresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCadastrarFornecedoresActionPerformed
+    private void jMenuItemEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstoqueActionPerformed
+        TelaEstoque telaDoEstoque = new TelaEstoque(conexao);
+        telaDoEstoque.setVisible(true);
+    }//GEN-LAST:event_jMenuItemEstoqueActionPerformed
 
-    private void buttonCadastrarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarFuncionariosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonCadastrarFuncionariosActionPerformed
+    private void jMenuItemFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionariosActionPerformed
+        TelaCadastroUsuario telaCadastroUsuario = new TelaCadastroUsuario(conexao);
+        telaCadastroUsuario.setVisible(true);
+    }//GEN-LAST:event_jMenuItemFuncionariosActionPerformed
+
+    private void jMenuItemFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFornecedoresActionPerformed
+        TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor(conexao);
+        telaCadastroFornecedor.setVisible(true);
+    }//GEN-LAST:event_jMenuItemFornecedoresActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonCadastrarFornecedores;
-    private javax.swing.JButton buttonCadastrarFuncionarios;
-    private javax.swing.JButton buttonEstoque;
-    private javax.swing.JButton buttonVendas;
-    private javax.swing.JLabel jLabelCadastrar;
     private javax.swing.JLabel jLabelFornecedores;
-    private javax.swing.JLabel jLabelMovimentação;
+    private javax.swing.JLabel jLabelFornecedores1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuCadastrar;
+    private javax.swing.JMenuItem jMenuItemEstoque;
+    private javax.swing.JMenuItem jMenuItemFornecedores;
+    private javax.swing.JMenuItem jMenuItemFuncionarios;
+    private javax.swing.JMenuItem jMenuItemVendas;
+    private javax.swing.JMenu jMenuMovimentacao;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

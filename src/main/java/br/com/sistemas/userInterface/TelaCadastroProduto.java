@@ -30,28 +30,20 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        idProduto = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelQuantidade = new javax.swing.JLabel();
         quantidadeProduto = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        precoProduto = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelPreco = new javax.swing.JLabel();
+        valorProduto = new javax.swing.JTextField();
+        jLabelDescricao = new javax.swing.JLabel();
         descricaoProduto = new javax.swing.JTextField();
+        jLabelFornecedor = new javax.swing.JLabel();
+        fornecedorProduto = new javax.swing.JTextField();
         buttonAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setText("Quantidade");
-
-        idProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idProdutoActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("Preço");
+        jLabelQuantidade.setText("Quantidade");
 
         quantidadeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,19 +51,27 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Descrição");
+        jLabelPreco.setText("Valor");
 
-        precoProduto.addActionListener(new java.awt.event.ActionListener() {
+        valorProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                precoProdutoActionPerformed(evt);
+                valorProdutoActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Fornecedor");
+        jLabelDescricao.setText("Descrição");
 
         descricaoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 descricaoProdutoActionPerformed(evt);
+            }
+        });
+
+        jLabelFornecedor.setText("Fornecedor");
+
+        fornecedorProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fornecedorProdutoActionPerformed(evt);
             }
         });
 
@@ -89,14 +89,14 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(descricaoProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(precoProduto)
-                    .addComponent(quantidadeProduto)
-                    .addComponent(idProduto))
+                    .addComponent(jLabelQuantidade)
+                    .addComponent(jLabelPreco)
+                    .addComponent(jLabelDescricao)
+                    .addComponent(jLabelFornecedor)
+                    .addComponent(fornecedorProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(descricaoProduto)
+                    .addComponent(valorProduto)
+                    .addComponent(quantidadeProduto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonAdicionar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -105,21 +105,21 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(idProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabelQuantidade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(quantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jLabelPreco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(precoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(valorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
+                .addComponent(jLabelDescricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(descricaoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelFornecedor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fornecedorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonAdicionar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -141,7 +141,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     int pro_quantidade;
 
     try {
-        pro_valor = Double.parseDouble(precoProduto.getText());
+        pro_valor = Double.parseDouble(valorProduto.getText());
         pro_quantidade = Integer.parseInt(quantidadeProduto.getText());
     } catch (NumberFormatException e) {
         System.out.println("Erro: Certifique-se de que o preço e a quantidade são números válidos.");
@@ -169,32 +169,32 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_buttonAdicionarActionPerformed
 
-    private void quantidadeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantidadeProdutoActionPerformed
+    private void valorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorProdutoActionPerformed
         // TODO add your handling code here:
         
+    }//GEN-LAST:event_valorProdutoActionPerformed
+
+    private void quantidadeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantidadeProdutoActionPerformed
+        // TODO add your handling code here:
     }//GEN-LAST:event_quantidadeProdutoActionPerformed
-
-    private void idProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idProdutoActionPerformed
-
-    private void precoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precoProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_precoProdutoActionPerformed
 
     private void descricaoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricaoProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_descricaoProdutoActionPerformed
 
+    private void fornecedorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fornecedorProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fornecedorProdutoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
     private javax.swing.JTextField descricaoProduto;
-    private javax.swing.JTextField idProduto;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField precoProduto;
+    private javax.swing.JTextField fornecedorProduto;
+    private javax.swing.JLabel jLabelDescricao;
+    private javax.swing.JLabel jLabelFornecedor;
+    private javax.swing.JLabel jLabelPreco;
+    private javax.swing.JLabel jLabelQuantidade;
     private javax.swing.JTextField quantidadeProduto;
+    private javax.swing.JTextField valorProduto;
     // End of variables declaration//GEN-END:variables
 }
