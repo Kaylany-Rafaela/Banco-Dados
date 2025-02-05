@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS tb_itens cascade;
 
 	-- Tabela de Fornecedores
 CREATE TABLE tb_fornecedores (
-    for_codigo SERIAL PRIMARY KEY,
+    for_codigo BIGINT PRIMARY KEY,
     for_descricao VARCHAR(45) NOT NULL
 );
 
 	-- Tabela de Produtos
 CREATE TABLE tb_produtos (
-    pro_codigo SERIAL PRIMARY KEY,
+    pro_codigo BIGINT PRIMARY KEY,
     pro_descricao VARCHAR(45) NOT NULL,
     pro_valor DECIMAL(10, 2) NOT NULL,
     pro_quantidade INT NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE tb_produtos (
 
 	-- Tabela de Funcionários
 CREATE TABLE tb_funcionarios (
-    fun_codigo SERIAL PRIMARY KEY,
+    fun_codigo BIGINT PRIMARY KEY,
     fun_nome VARCHAR(45) NOT NULL,
     fun_cpf VARCHAR(45) NOT NULL UNIQUE,
     fun_senha VARCHAR(50) NOT NULL,
@@ -84,8 +84,7 @@ CREATE USER admin WITH PASSWORD 'admin' CREATEROLE;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 GRANT INSERT ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 GRANT UPDATE ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
-GRANT USAGE ON tb_funcionarios_fun_codigo_seq to admin;
-GRANT USAGE ON tb_fornecedores_for_codigo_seq to admin;
+GRANT DELETE ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
 
 --Criação do grupo vendedor e suas permissões
 DROP OWNED BY vendedor;
@@ -100,6 +99,7 @@ CREATE ROLE estoquista;
 GRANT INSERT ON tb_produtos TO estoquista;
 GRANT SELECT ON tb_produtos TO estoquista;
 GRANT UPDATE ON tb_produtos TO estoquista;
+GRANT DELETE ON tb_produtos TO estoquista;
 
 GRANT vendedor to admin WITH ADMIN OPTION;
 GRANT estoquista to admin WITH ADMIN OPTION;

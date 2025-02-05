@@ -10,11 +10,11 @@ import javax.swing.JOptionPane;
  *
  * @author Bastos
  */
-public class TelaCadastroFornecedor extends javax.swing.JFrame {
+public class TelaRemocaoProduto extends javax.swing.JFrame {
 
     ConexaoBDPostgres conexao;
            
-    public TelaCadastroFornecedor(ConexaoBDPostgres conexao) {
+    public TelaRemocaoProduto(ConexaoBDPostgres conexao) {
 
         this.conexao = conexao;
         initComponents();
@@ -31,7 +31,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
 
         jButtonOk = new javax.swing.JButton();
         jLabelNomeFornecedor = new javax.swing.JLabel();
-        jTextFieldDescricaoFornecedor = new javax.swing.JTextField();
+        jTextFieldIdProduto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,11 +42,11 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             }
         });
 
-        jLabelNomeFornecedor.setText("Nome Fornecedor:");
+        jLabelNomeFornecedor.setText("ID do Produto:");
 
-        jTextFieldDescricaoFornecedor.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldIdProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDescricaoFornecedorActionPerformed(evt);
+                jTextFieldIdProdutoActionPerformed(evt);
             }
         });
 
@@ -58,7 +58,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonOk)
-                    .addComponent(jTextFieldDescricaoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelNomeFornecedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -68,7 +68,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelNomeFornecedor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldDescricaoFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonOk)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -77,25 +77,24 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldDescricaoFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoFornecedorActionPerformed
+    private void jTextFieldIdProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdProdutoActionPerformed
  
-    }//GEN-LAST:event_jTextFieldDescricaoFornecedorActionPerformed
+    }//GEN-LAST:event_jTextFieldIdProdutoActionPerformed
 
     private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
-        String fornecedor = jTextFieldDescricaoFornecedor.getText();
+        String idProduto = jTextFieldIdProduto.getText();
         try {
                 PreparedStatement ps = null;
                 String sql = null; 
 
-                sql = "INSERT INTO tb_fornecedores(for_descricao) VALUES ('" + fornecedor + "');";        
+                sql = "DELETE FROM tb_produtos WHERE pro_codigo = " + idProduto + ";" + "ALTER SEQUENCE tb_produtos_pro_codigo_seq RESTART WITH 1;";        
                 ps = conexao.getConexao().prepareStatement(sql);
                 ps.executeUpdate();
 
                 // Encerra a transação e mostra mensagam de sucesso
                 ps.close();
-                JOptionPane.showMessageDialog(null, "Registrado fornecedor " + fornecedor + " com sucesso!");
-
-                dispose(); // Auto-fecha janela de cadastro;
+                JOptionPane.showMessageDialog(null, "Removido produto " + idProduto + " com sucesso!");
+                dispose(); // Auto-fecha janela de remocao;
             } catch (SQLException e){
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }       
@@ -105,6 +104,6 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonOk;
     private javax.swing.JLabel jLabelNomeFornecedor;
-    private javax.swing.JTextField jTextFieldDescricaoFornecedor;
+    private javax.swing.JTextField jTextFieldIdProduto;
     // End of variables declaration//GEN-END:variables
 }

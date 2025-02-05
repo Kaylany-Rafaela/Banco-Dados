@@ -228,8 +228,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                     // Prefixada e sufixada a letra u no nome do usuário pois o postgre não aceita usuários completamente numéricos
                     sql = "CREATE USER u" + cpf + "u WITH PASSWORD '" + senha + "';"
                             + "GRANT " + funcao + " to u" + cpf + "u;"
-                            + "INSERT into tb_funcionarios(fun_funcao, fun_cpf, fun_nome, fun_senha) values  ('" 
-                            + funcao + "', " + cpf + ", '" + username + "', '" + senha + "');";        
+                            + "CALL insert_tb_funcionarios('" + username + "', '" + cpf + "', '" + senha + "', '" + funcao + "');";        
                     ps = conexao.getConexao().prepareStatement(sql);
                     ps.executeUpdate();
                     
@@ -241,7 +240,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                     conexao.disconnect();
                     dispose(); // Auto-fecha janela de cadastro;
                 } catch (SQLException e){
-                    jLabelError.setText(e.getMessage()); // Mostra mensagem de erro na janela de cadastro
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }               
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 }

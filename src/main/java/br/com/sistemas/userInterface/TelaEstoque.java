@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.table.TableModel;
 import javax.swing.table.DefaultTableModel;
 import java.util.Vector;
 
@@ -16,9 +15,6 @@ import java.util.Vector;
  */
 public class TelaEstoque extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaEstoque
-     */
     ConexaoBDPostgres conexao;
     DefaultTableModel modelo = new DefaultTableModel(new Object [][] { },
             new String [] { "Código", "Descrição", "Quantidade", "Valor", "Fornecedor" });
@@ -62,10 +58,11 @@ public class TelaEstoque extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaProdutosEstoque = new javax.swing.JTable();
-        buttonAdicionarRemover = new javax.swing.JButton();
+        buttonAdicionar = new javax.swing.JButton();
         buttonBuscar = new javax.swing.JButton();
         jTextFieldBuscarProduto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        buttonRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -74,10 +71,10 @@ public class TelaEstoque extends javax.swing.JFrame {
         tabelaProdutosEstoque.setModel(modelo);
         jScrollPane1.setViewportView(tabelaProdutosEstoque);
 
-        buttonAdicionarRemover.setText("Adicionar/Remover");
-        buttonAdicionarRemover.addActionListener(new java.awt.event.ActionListener() {
+        buttonAdicionar.setText("Adicionar");
+        buttonAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAdicionarRemoverActionPerformed(evt);
+                buttonAdicionarActionPerformed(evt);
             }
         });
 
@@ -96,6 +93,13 @@ public class TelaEstoque extends javax.swing.JFrame {
 
         jLabel1.setText("Buscar:");
 
+        buttonRemover.setText("Remover");
+        buttonRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRemoverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,13 +108,17 @@ public class TelaEstoque extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextFieldBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonBuscar)
-                        .addGap(97, 97, 97)
-                        .addComponent(buttonAdicionarRemover, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -122,7 +130,8 @@ public class TelaEstoque extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonBuscar)
-                    .addComponent(buttonAdicionarRemover))
+                    .addComponent(buttonAdicionar)
+                    .addComponent(buttonRemover))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -140,14 +149,20 @@ public class TelaEstoque extends javax.swing.JFrame {
         carregarProdutos();
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
-    private void buttonAdicionarRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarRemoverActionPerformed
+    private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
         TelaCadastroProduto telaAdicionarProduto = new TelaCadastroProduto(conexao);
         telaAdicionarProduto.setVisible(true);
-    }//GEN-LAST:event_buttonAdicionarRemoverActionPerformed
+    }//GEN-LAST:event_buttonAdicionarActionPerformed
+
+    private void buttonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoverActionPerformed
+        TelaRemocaoProduto telaRemocaoProduto = new TelaRemocaoProduto(conexao);
+        telaRemocaoProduto.setVisible(true);
+    }//GEN-LAST:event_buttonRemoverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAdicionarRemover;
+    private javax.swing.JButton buttonAdicionar;
     private javax.swing.JButton buttonBuscar;
+    private javax.swing.JButton buttonRemover;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldBuscarProduto;

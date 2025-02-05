@@ -31,13 +31,18 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jTextFieldBuscarProduto" min="-2" pref="463" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonBuscar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                      <Component id="buttonAdicionarRemover" pref="150" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="buttonAdicionar" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="buttonRemover" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -53,7 +58,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextFieldBuscarProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="buttonAdicionarRemover" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonAdicionar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonRemover" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="500" max="-2" attributes="0"/>
@@ -111,12 +117,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="buttonAdicionarRemover">
+    <Component class="javax.swing.JButton" name="buttonAdicionar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Adicionar/Remover"/>
+        <Property name="text" type="java.lang.String" value="Adicionar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAdicionarRemoverActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAdicionarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonBuscar">
@@ -136,6 +142,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonRemover">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Remover"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRemoverActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
