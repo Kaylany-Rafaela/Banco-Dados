@@ -5,7 +5,10 @@ import br.com.sistemas.model.database.ConexaoBDPostgres;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 import javax.swing.table.DefaultTableModel;
+import java.util.Vector;
 
 /**
  *
@@ -17,30 +20,37 @@ public class TelaEstoque extends javax.swing.JFrame {
      * Creates new form TelaEstoque
      */
     ConexaoBDPostgres conexao;
+    DefaultTableModel modelo = new DefaultTableModel(new Object [][] { },
+            new String [] { "Código", "Descrição", "Quantidade", "Valor", "Fornecedor" });
     
     public TelaEstoque(ConexaoBDPostgres conexao) {
         this.conexao = conexao;
         initComponents();
+        carregarProdutos();
     }
-    public void carregarProdutos(javax.swing.JTable tabela) throws SQLException {
-        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
-        modelo.setRowCount(0);
-        String sql = "SELECT Cod_produto, NomeProd, quantidade, valor FROM Produto";
-
-        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                Object[] linha = {
-                    rs.getInt("Cod_produto"),
-                    rs.getString("NomeProd"),
-                    rs.getInt("quantidade"),
-                    rs.getDouble("valor")
-                };
-                modelo.addRow(linha);
-            }
-        }    
+    public final void carregarProdutos() {
+        String busca = jTextFieldBuscarProduto.getText();
+        String sql = "SELECT * FROM tb_produtos WHERE pro_descricao LIKE '" + busca + "%';";
+        try  (PreparedStatement ps = conexao.getConexao().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery()) {
+                while(modelo.getRowCount() > 0) {
+                    modelo.removeRow(0);
+                }
+                while (rs.next()) {
+                    Vector linha = new Vector();
+                    linha.add(rs.getInt("pro_codigo"));
+                    linha.add(rs.getString("pro_descricao"));
+                    linha.add(rs.getDouble("pro_valor"));
+                    linha.add(rs.getInt("pro_quantidade"));
+                    linha.add(rs.getInt("tb_fornecedores_for_codigo"));
+                    modelo.addRow(linha);
+                }
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,29 +64,14 @@ public class TelaEstoque extends javax.swing.JFrame {
         tabelaProdutosEstoque = new javax.swing.JTable();
         buttonAdicionarRemover = new javax.swing.JButton();
         buttonBuscar = new javax.swing.JButton();
-        campoBuscarProduto = new javax.swing.JTextField();
+        jTextFieldBuscarProduto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
-        tabelaProdutosEstoque.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Descrição", "Quantidade", "Valor", "Fornecedor"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        tabelaProdutosEstoque.setModel(modelo);
         jScrollPane1.setViewportView(tabelaProdutosEstoque);
 
         buttonAdicionarRemover.setText("Adicionar/Remover");
@@ -93,10 +88,9 @@ public class TelaEstoque extends javax.swing.JFrame {
             }
         });
 
-        campoBuscarProduto.setText("Produto");
-        campoBuscarProduto.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldBuscarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoBuscarProdutoActionPerformed(evt);
+                jTextFieldBuscarProdutoActionPerformed(evt);
             }
         });
 
@@ -112,7 +106,7 @@ public class TelaEstoque extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(campoBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonBuscar)
                         .addGap(97, 97, 97)
@@ -126,7 +120,7 @@ public class TelaEstoque extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonBuscar)
                     .addComponent(buttonAdicionarRemover))
                 .addGap(18, 18, 18)
@@ -137,13 +131,13 @@ public class TelaEstoque extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoBuscarProdutoActionPerformed
+    private void jTextFieldBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBuscarProdutoActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_campoBuscarProdutoActionPerformed
+    }//GEN-LAST:event_jTextFieldBuscarProdutoActionPerformed
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
-//         TODO add your handling code here:
+        carregarProdutos();
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     private void buttonAdicionarRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarRemoverActionPerformed
@@ -154,9 +148,9 @@ public class TelaEstoque extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionarRemover;
     private javax.swing.JButton buttonBuscar;
-    private javax.swing.JTextField campoBuscarProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextFieldBuscarProduto;
     private javax.swing.JTable tabelaProdutosEstoque;
     // End of variables declaration//GEN-END:variables
 }

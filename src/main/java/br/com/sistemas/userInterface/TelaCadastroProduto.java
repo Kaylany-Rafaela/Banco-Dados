@@ -7,6 +7,8 @@ package br.com.sistemas.userInterface;
 import br.com.sistemas.model.database.ConexaoBDPostgres;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,13 +33,13 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelQuantidade = new javax.swing.JLabel();
-        quantidadeProduto = new javax.swing.JTextField();
+        jTextFieldQuantidadeProduto = new javax.swing.JTextField();
         jLabelPreco = new javax.swing.JLabel();
-        valorProduto = new javax.swing.JTextField();
+        jTextFieldValorProduto = new javax.swing.JTextField();
         jLabelDescricao = new javax.swing.JLabel();
-        descricaoProduto = new javax.swing.JTextField();
+        jTextFieldDescricaoProduto = new javax.swing.JTextField();
         jLabelFornecedor = new javax.swing.JLabel();
-        fornecedorProduto = new javax.swing.JTextField();
+        jTextFieldIdFornecedorProduto = new javax.swing.JTextField();
         buttonAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -45,33 +47,33 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         jLabelQuantidade.setText("Quantidade");
 
-        quantidadeProduto.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldQuantidadeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quantidadeProdutoActionPerformed(evt);
+                jTextFieldQuantidadeProdutoActionPerformed(evt);
             }
         });
 
         jLabelPreco.setText("Valor");
 
-        valorProduto.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldValorProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valorProdutoActionPerformed(evt);
+                jTextFieldValorProdutoActionPerformed(evt);
             }
         });
 
         jLabelDescricao.setText("Descrição");
 
-        descricaoProduto.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDescricaoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descricaoProdutoActionPerformed(evt);
+                jTextFieldDescricaoProdutoActionPerformed(evt);
             }
         });
 
-        jLabelFornecedor.setText("Fornecedor");
+        jLabelFornecedor.setText("ID Fornecedor");
 
-        fornecedorProduto.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldIdFornecedorProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fornecedorProdutoActionPerformed(evt);
+                jTextFieldIdFornecedorProdutoActionPerformed(evt);
             }
         });
 
@@ -93,10 +95,10 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                     .addComponent(jLabelPreco)
                     .addComponent(jLabelDescricao)
                     .addComponent(jLabelFornecedor)
-                    .addComponent(fornecedorProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(descricaoProduto)
-                    .addComponent(valorProduto)
-                    .addComponent(quantidadeProduto))
+                    .addComponent(jTextFieldIdFornecedorProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(jTextFieldDescricaoProduto)
+                    .addComponent(jTextFieldValorProduto)
+                    .addComponent(jTextFieldQuantidadeProduto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonAdicionar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -107,19 +109,19 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelQuantidade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(quantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelPreco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(valorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldValorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelDescricao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(descricaoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldDescricaoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelFornecedor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fornecedorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldIdFornecedorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonAdicionar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -130,71 +132,69 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
 
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
-    
-    // Criando um objeto da classe de conexão
 
-    Connection conexao = conexaoBD.getConexao();
+        // Criando um objeto da classe de conexão
 
-    // Pegando os valores dos campos de texto
-    String pro_descricao = descricaoProduto.getText();
-    double pro_valor;
-    int pro_quantidade;
+        Connection conexao = conexaoBD.getConexao();
 
-    try {
-        pro_valor = Double.parseDouble(valorProduto.getText());
-        pro_quantidade = Integer.parseInt(quantidadeProduto.getText());
-    } catch (NumberFormatException e) {
-        System.out.println("Erro: Certifique-se de que o preço e a quantidade são números válidos.");
-        return;
-    }
+        // Pegando os valores dos campos de texto
+        String descricaoProduto = jTextFieldDescricaoProduto.getText();
+        double valorProduto = 0;
+        int quantidadeProduto = 0;
+        int idFornecedorProduto = 0;
 
-    // Query SQL
-    String sql = "INSERT INTO tb_produtos (pro_descricao, pro_valor, pro_quantidade) VALUES (?, ?, ?)";
+        try {
+            valorProduto = Double.parseDouble(jTextFieldValorProduto.getText());
+            quantidadeProduto = Integer.parseInt(jTextFieldQuantidadeProduto.getText());
+            idFornecedorProduto = Integer.parseInt(jTextFieldIdFornecedorProduto.getText());
+        } catch (NumberFormatException e) {
+            System.out.println("Erro: Certifique-se de que o preço e a quantidade são números válidos.");
+        }
 
-    // Conexão com o banco e inserção dos dados
-    try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+        // Query SQL
+        String sql = "INSERT INTO tb_produtos (pro_descricao, pro_valor, pro_quantidade, tb_fornecedores_for_codigo) VALUES (?, ?, ?, ?)";
 
-        stmt.setString(1, pro_descricao);
-        stmt.setDouble(2, pro_valor);
-        stmt.setInt(3, pro_quantidade);
+        // Conexão com o banco e inserção dos dados
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
-        int linhasAfetadas = stmt.executeUpdate();
-        System.out.println("✅ Produto inserido com sucesso! Linhas afetadas: " + linhasAfetadas);
+            stmt.setString(1, descricaoProduto);
+            stmt.setDouble(2, valorProduto);
+            stmt.setInt(3, quantidadeProduto);
+            stmt.setInt(4, idFornecedorProduto);
 
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-    } finally {
-        // Fechar conexão após o uso
-        conexaoBD.disconnect();
-    }
+            int linhasAfetadas = stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "✅ Produto " + descricaoProduto + " inserido com sucesso! Linhas afetadas: " + linhasAfetadas);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_buttonAdicionarActionPerformed
 
-    private void valorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorProdutoActionPerformed
+    private void jTextFieldValorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorProdutoActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_valorProdutoActionPerformed
+    }//GEN-LAST:event_jTextFieldValorProdutoActionPerformed
 
-    private void quantidadeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantidadeProdutoActionPerformed
+    private void jTextFieldQuantidadeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQuantidadeProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_quantidadeProdutoActionPerformed
+    }//GEN-LAST:event_jTextFieldQuantidadeProdutoActionPerformed
 
-    private void descricaoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricaoProdutoActionPerformed
+    private void jTextFieldDescricaoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_descricaoProdutoActionPerformed
+    }//GEN-LAST:event_jTextFieldDescricaoProdutoActionPerformed
 
-    private void fornecedorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fornecedorProdutoActionPerformed
+    private void jTextFieldIdFornecedorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdFornecedorProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fornecedorProdutoActionPerformed
+    }//GEN-LAST:event_jTextFieldIdFornecedorProdutoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
-    private javax.swing.JTextField descricaoProduto;
-    private javax.swing.JTextField fornecedorProduto;
     private javax.swing.JLabel jLabelDescricao;
     private javax.swing.JLabel jLabelFornecedor;
     private javax.swing.JLabel jLabelPreco;
     private javax.swing.JLabel jLabelQuantidade;
-    private javax.swing.JTextField quantidadeProduto;
-    private javax.swing.JTextField valorProduto;
+    private javax.swing.JTextField jTextFieldDescricaoProduto;
+    private javax.swing.JTextField jTextFieldIdFornecedorProduto;
+    private javax.swing.JTextField jTextFieldQuantidadeProduto;
+    private javax.swing.JTextField jTextFieldValorProduto;
     // End of variables declaration//GEN-END:variables
 }

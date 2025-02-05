@@ -31,10 +31,10 @@
                   <Component id="jLabelPreco" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelDescricao" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelFornecedor" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="fornecedorProduto" alignment="0" pref="300" max="32767" attributes="0"/>
-                  <Component id="descricaoProduto" alignment="0" max="32767" attributes="0"/>
-                  <Component id="valorProduto" alignment="0" max="32767" attributes="0"/>
-                  <Component id="quantidadeProduto" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTextFieldIdFornecedorProduto" alignment="0" pref="300" max="32767" attributes="0"/>
+                  <Component id="jTextFieldDescricaoProduto" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTextFieldValorProduto" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTextFieldQuantidadeProduto" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="buttonAdicionar" min="-2" max="-2" attributes="0"/>
@@ -48,19 +48,19 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabelQuantidade" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="quantidadeProduto" min="-2" max="-2" attributes="0"/>
+              <Component id="jTextFieldQuantidadeProduto" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabelPreco" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="valorProduto" min="-2" max="-2" attributes="0"/>
+              <Component id="jTextFieldValorProduto" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabelDescricao" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="descricaoProduto" min="-2" max="-2" attributes="0"/>
+              <Component id="jTextFieldDescricaoProduto" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabelFornecedor" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="fornecedorProduto" min="-2" max="-2" attributes="0"/>
+              <Component id="jTextFieldIdFornecedorProduto" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="buttonAdicionar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -74,9 +74,9 @@
         <Property name="text" type="java.lang.String" value="Quantidade"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="quantidadeProduto">
+    <Component class="javax.swing.JTextField" name="jTextFieldQuantidadeProduto">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quantidadeProdutoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldQuantidadeProdutoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelPreco">
@@ -84,9 +84,9 @@
         <Property name="text" type="java.lang.String" value="Valor"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="valorProduto">
+    <Component class="javax.swing.JTextField" name="jTextFieldValorProduto">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="valorProdutoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldValorProdutoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelDescricao">
@@ -94,19 +94,19 @@
         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="descricaoProduto">
+    <Component class="javax.swing.JTextField" name="jTextFieldDescricaoProduto">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descricaoProdutoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDescricaoProdutoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelFornecedor">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Fornecedor"/>
+        <Property name="text" type="java.lang.String" value="ID Fornecedor"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="fornecedorProduto">
+    <Component class="javax.swing.JTextField" name="jTextFieldIdFornecedorProduto">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fornecedorProdutoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldIdFornecedorProdutoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonAdicionar">
