@@ -19,7 +19,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         this.conexao = conexao;
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,7 +87,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 PreparedStatement ps = null;
                 String sql = null; 
 
-                sql = "INSERT INTO tb_fornecedores(for_descricao) VALUES ('" + fornecedor + "');";        
+                sql = "CALL insert_tb_fornecedores('" + fornecedor + "');";        
                 ps = conexao.getConexao().prepareStatement(sql);
                 ps.executeUpdate();
 

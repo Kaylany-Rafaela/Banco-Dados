@@ -5,6 +5,12 @@
 package br.com.sistemas.userInterface;
 
 import br.com.sistemas.model.database.ConexaoBDPostgres;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 //registro de teste 123321
 /**
@@ -17,12 +23,57 @@ public class TelaHome extends javax.swing.JFrame {
      * Creates new form TelaHome
      */
     ConexaoBDPostgres conexao;
-            
+    DefaultTableModel modeloFuncionario = new DefaultTableModel(new Object [][] { },
+            new String [] { "ID", "Nome", "CPF", "Funcao" });
+    
+    DefaultTableModel modeloFornecedor = new DefaultTableModel(new Object [][] { },
+            new String [] { "ID", "Nome" });
+    
     public TelaHome(ConexaoBDPostgres conexao) {
         this.conexao = conexao;
         initComponents();
+        carregarFuncionarios();
+        carregarFornecedores();
     }
 
+     public final void carregarFuncionarios() {
+        String sql = "SELECT * FROM tb_funcionarios;";
+        try  (PreparedStatement ps = conexao.getConexao().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery()) {
+                while(modeloFuncionario.getRowCount() > 0) {
+                    modeloFuncionario.removeRow(0);
+                }
+                while (rs.next()) {
+                    Vector linha = new Vector();
+                    linha.add(rs.getInt("fun_codigo"));
+                    linha.add(rs.getString("fun_nome"));
+                    linha.add(rs.getString("fun_cpf"));
+                    linha.add(rs.getString("fun_funcao"));
+                    modeloFuncionario.addRow(linha);
+                }
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
+    public final void carregarFornecedores() {
+        String sql = "SELECT * FROM tb_fornecedores;";
+        try  (PreparedStatement ps = conexao.getConexao().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery()) {
+                while(modeloFornecedor.getRowCount() > 0) {
+                    modeloFornecedor.removeRow(0);
+                }
+                while (rs.next()) {
+                    Vector linha = new Vector();
+                    linha.add(rs.getInt("for_codigo"));
+                    linha.add(rs.getString("for_descricao"));
+                    modeloFornecedor.addRow(linha);
+                }
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,6 +90,9 @@ public class TelaHome extends javax.swing.JFrame {
         jLabelFornecedores = new javax.swing.JLabel();
         jLabelFornecedores1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemRefresh = new javax.swing.JMenuItem();
+        jMenuItemBackup = new javax.swing.JMenuItem();
         jMenuMovimentacao = new javax.swing.JMenu();
         jMenuItemVendas = new javax.swing.JMenuItem();
         jMenuItemEstoque = new javax.swing.JMenuItem();
@@ -48,40 +102,30 @@ public class TelaHome extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tabelaMostrarFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Nome", "CPF", "Função"
-            }
-        ));
+        tabelaMostrarFuncionarios.setModel(modeloFuncionario);
         jScrollPane1.setViewportView(tabelaMostrarFuncionarios);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "ID", "Nome"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        jTable1.setModel(modeloFornecedor);
         jScrollPane2.setViewportView(jTable1);
 
         jLabelFornecedores.setText("Fornecedores:");
 
         jLabelFornecedores1.setText("Funcionários");
+
+        jMenu1.setText("Sistema");
+
+        jMenuItemRefresh.setText("Refresh");
+        jMenuItemRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRefreshActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemRefresh);
+
+        jMenuItemBackup.setText("Backup");
+        jMenu1.add(jMenuItemBackup);
+
+        jMenuBar1.add(jMenu1);
 
         jMenuMovimentacao.setText("Movimentação");
 
@@ -177,14 +221,22 @@ public class TelaHome extends javax.swing.JFrame {
         telaCadastroFornecedor.setVisible(true);
     }//GEN-LAST:event_jMenuItemFornecedoresActionPerformed
 
+    private void jMenuItemRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRefreshActionPerformed
+        carregarFuncionarios();
+        carregarFornecedores();
+    }//GEN-LAST:event_jMenuItemRefreshActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelFornecedores;
     private javax.swing.JLabel jLabelFornecedores1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastrar;
+    private javax.swing.JMenuItem jMenuItemBackup;
     private javax.swing.JMenuItem jMenuItemEstoque;
     private javax.swing.JMenuItem jMenuItemFornecedores;
     private javax.swing.JMenuItem jMenuItemFuncionarios;
+    private javax.swing.JMenuItem jMenuItemRefresh;
     private javax.swing.JMenuItem jMenuItemVendas;
     private javax.swing.JMenu jMenuMovimentacao;
     private javax.swing.JScrollPane jScrollPane1;
