@@ -60,13 +60,15 @@ public class ConexaoBDPostgres {
     public String getCargo(String cpf){
         String cargo = "nulo";
         String sql = "SELECT fun_funcao FROM tb_funcionarios WHERE fun_cpf = '" + cpf + "';";
-        try (PreparedStatement ps = conexao.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+        try 
+        {
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 cargo = rs.getString("fun_funcao");
             }
         }   catch(SQLException e){
-            cargo = "SQLException";
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
         return cargo;
     }

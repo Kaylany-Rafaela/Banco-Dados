@@ -128,6 +128,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -152,18 +153,14 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         }
 
         // Query SQL
-        String sql = "INSERT INTO tb_produtos (pro_descricao, pro_valor, pro_quantidade, tb_fornecedores_for_codigo) VALUES (?, ?, ?, ?)";
+        String sql = "CALL insert_tb_produtos('" + descricaoProduto + "', '" + valorProduto + "', '" 
+                + quantidadeProduto + "', '" + idFornecedorProduto + "')";
 
         // Conexão com o banco e inserção dos dados
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-
-            stmt.setString(1, descricaoProduto);
-            stmt.setDouble(2, valorProduto);
-            stmt.setInt(3, quantidadeProduto);
-            stmt.setInt(4, idFornecedorProduto);
-
-            int linhasAfetadas = stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "✅ Produto " + descricaoProduto + " inserido com sucesso! Linhas afetadas: " + linhasAfetadas);
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "✅ Produto " + descricaoProduto + " inserido com sucesso!");
+            stmt.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

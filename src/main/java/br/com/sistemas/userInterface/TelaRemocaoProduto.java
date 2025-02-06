@@ -75,6 +75,7 @@ public class TelaRemocaoProduto extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldIdProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdProdutoActionPerformed
@@ -87,7 +88,7 @@ public class TelaRemocaoProduto extends javax.swing.JFrame {
                 PreparedStatement ps = null;
                 String sql = null; 
 
-                sql = "DELETE FROM tb_produtos WHERE pro_codigo = " + idProduto + ";" + "ALTER SEQUENCE tb_produtos_pro_codigo_seq RESTART WITH 1;";        
+                sql = "CALL remove_tb_produtos('" + idProduto + "');";        
                 ps = conexao.getConexao().prepareStatement(sql);
                 ps.executeUpdate();
 

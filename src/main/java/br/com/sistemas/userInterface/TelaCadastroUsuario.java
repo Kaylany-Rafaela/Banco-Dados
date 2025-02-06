@@ -235,9 +235,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                     // Encerra a transação e mostra mensagam de sucesso
                     ps.close();
                     JOptionPane.showMessageDialog(null, "Registrado usuário " + cpf + " (" + username + ")" + " com sucesso!");
-                    
-                    //Desconecta e fecha
-                    conexao.disconnect();
                     dispose(); // Auto-fecha janela de cadastro;
                 } catch (SQLException e){
                     JOptionPane.showMessageDialog(null, e.getMessage());

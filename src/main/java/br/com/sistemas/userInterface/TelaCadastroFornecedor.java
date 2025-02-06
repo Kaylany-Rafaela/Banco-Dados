@@ -19,7 +19,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         this.conexao = conexao;
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,6 +75,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldDescricaoFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoFornecedorActionPerformed
@@ -87,14 +88,13 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 PreparedStatement ps = null;
                 String sql = null; 
 
-                sql = "INSERT INTO tb_fornecedores(for_descricao) VALUES ('" + fornecedor + "');";        
+                sql = "CALL insert_tb_fornecedores('" + fornecedor + "');";        
                 ps = conexao.getConexao().prepareStatement(sql);
                 ps.executeUpdate();
 
                 // Encerra a transação e mostra mensagam de sucesso
                 ps.close();
                 JOptionPane.showMessageDialog(null, "Registrado fornecedor " + fornecedor + " com sucesso!");
-
                 dispose(); // Auto-fecha janela de cadastro;
             } catch (SQLException e){
                 JOptionPane.showMessageDialog(null, e.getMessage());
