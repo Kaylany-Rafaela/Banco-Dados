@@ -94,7 +94,6 @@ public class TelaHome extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemRefresh = new javax.swing.JMenuItem();
-        jMenuItemBackup = new javax.swing.JMenuItem();
         jMenuMovimentacao = new javax.swing.JMenu();
         jMenuItemVendas = new javax.swing.JMenuItem();
         jMenuItemEstoque = new javax.swing.JMenuItem();
@@ -127,9 +126,6 @@ public class TelaHome extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItemRefresh);
-
-        jMenuItemBackup.setText("Backup");
-        jMenu1.add(jMenuItemBackup);
 
         jMenuBar1.add(jMenu1);
 
@@ -239,7 +235,6 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastrar;
-    private javax.swing.JMenuItem jMenuItemBackup;
     private javax.swing.JMenuItem jMenuItemEstoque;
     private javax.swing.JMenuItem jMenuItemFornecedores;
     private javax.swing.JMenuItem jMenuItemFuncionarios;
