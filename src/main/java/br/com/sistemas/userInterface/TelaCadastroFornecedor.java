@@ -75,6 +75,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldDescricaoFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoFornecedorActionPerformed
@@ -94,7 +95,6 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 // Encerra a transação e mostra mensagam de sucesso
                 ps.close();
                 JOptionPane.showMessageDialog(null, "Registrado fornecedor " + fornecedor + " com sucesso!");
-
                 dispose(); // Auto-fecha janela de cadastro;
             } catch (SQLException e){
                 JOptionPane.showMessageDialog(null, e.getMessage());

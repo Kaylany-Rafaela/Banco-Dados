@@ -51,6 +51,7 @@ public class TelaHome extends javax.swing.JFrame {
                     linha.add(rs.getString("fun_funcao"));
                     modeloFuncionario.addRow(linha);
                 }
+                ps.close();
         } catch(SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -69,6 +70,7 @@ public class TelaHome extends javax.swing.JFrame {
                     linha.add(rs.getString("for_descricao"));
                     modeloFornecedor.addRow(linha);
                 }
+                ps.close();
         } catch(SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -103,9 +105,13 @@ public class TelaHome extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tabelaMostrarFuncionarios.setModel(modeloFuncionario);
+        tabelaMostrarFuncionarios.setEnabled(false);
+        tabelaMostrarFuncionarios.setFocusable(false);
+        tabelaMostrarFuncionarios.setRowSelectionAllowed(false);
         jScrollPane1.setViewportView(tabelaMostrarFuncionarios);
 
         jTable1.setModel(modeloFornecedor);
+        jTable1.setEnabled(false);
         jScrollPane2.setViewportView(jTable1);
 
         jLabelFornecedores.setText("Fornecedores:");
@@ -199,6 +205,7 @@ public class TelaHome extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVendasActionPerformed

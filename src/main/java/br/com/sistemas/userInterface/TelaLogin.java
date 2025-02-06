@@ -5,6 +5,7 @@
 package br.com.sistemas.userInterface;
 
 import br.com.sistemas.model.database.ConexaoBDPostgres;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,7 +39,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 400));
-        setUndecorated(true);
         setResizable(false);
 
         jLabelCPF.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -93,7 +93,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addContainerGap(125, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(600, 429));
+        setSize(new java.awt.Dimension(616, 437));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -122,6 +122,8 @@ public class TelaLogin extends javax.swing.JFrame {
                 } else if(cargo.equals("estoquista")){
                    TelaEstoque telaEstoque = new TelaEstoque(conexao);
                    telaEstoque.setVisible(true);
+                } else{
+                    JOptionPane.showMessageDialog(null, "Erro! Cargo não encontrado");
                 }
             }  
         }

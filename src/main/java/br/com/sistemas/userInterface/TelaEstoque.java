@@ -17,7 +17,7 @@ public class TelaEstoque extends javax.swing.JFrame {
 
     ConexaoBDPostgres conexao;
     DefaultTableModel modelo = new DefaultTableModel(new Object [][] { },
-            new String [] { "Código", "Descrição", "Quantidade", "Valor", "Fornecedor" });
+            new String [] { "Código", "Descrição", "Valor", "Quantidade", "ID Fornecedor" });
     
     public TelaEstoque(ConexaoBDPostgres conexao) {
         this.conexao = conexao;
@@ -41,6 +41,7 @@ public class TelaEstoque extends javax.swing.JFrame {
                     linha.add(rs.getInt("tb_fornecedores_for_codigo"));
                     modelo.addRow(linha);
                 }
+            ps.close();
         } catch(SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -63,12 +64,14 @@ public class TelaEstoque extends javax.swing.JFrame {
         jTextFieldBuscarProduto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         buttonRemover = new javax.swing.JButton();
+        jButtonAtualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
         tabelaProdutosEstoque.setModel(modelo);
+        tabelaProdutosEstoque.setEnabled(false);
         jScrollPane1.setViewportView(tabelaProdutosEstoque);
 
         buttonAdicionar.setText("Adicionar");
@@ -100,6 +103,13 @@ public class TelaEstoque extends javax.swing.JFrame {
             }
         });
 
+        jButtonAtualizar.setText("Atualizar");
+        jButtonAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,7 +125,9 @@ public class TelaEstoque extends javax.swing.JFrame {
                         .addComponent(jTextFieldBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonBuscar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAtualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -131,13 +143,15 @@ public class TelaEstoque extends javax.swing.JFrame {
                     .addComponent(jTextFieldBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonBuscar)
                     .addComponent(buttonAdicionar)
-                    .addComponent(buttonRemover))
+                    .addComponent(buttonRemover)
+                    .addComponent(jButtonAtualizar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldBuscarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBuscarProdutoActionPerformed
@@ -159,10 +173,16 @@ public class TelaEstoque extends javax.swing.JFrame {
         telaRemocaoProduto.setVisible(true);
     }//GEN-LAST:event_buttonRemoverActionPerformed
 
+    private void jButtonAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtualizarActionPerformed
+        TelaAtualizarEstoque telaAtualizarEstoque = new TelaAtualizarEstoque(conexao);
+        telaAtualizarEstoque.setVisible(true);
+    }//GEN-LAST:event_jButtonAtualizarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
     private javax.swing.JButton buttonBuscar;
     private javax.swing.JButton buttonRemover;
+    private javax.swing.JButton jButtonAtualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldBuscarProduto;

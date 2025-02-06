@@ -128,6 +128,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -157,8 +158,9 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         // Conexão com o banco e inserção dos dados
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            int linhasAfetadas = stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "✅ Produto " + descricaoProduto + " inserido com sucesso! Linhas afetadas: " + linhasAfetadas);
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "✅ Produto " + descricaoProduto + " inserido com sucesso!");
+            stmt.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

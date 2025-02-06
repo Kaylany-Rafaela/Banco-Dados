@@ -92,6 +92,7 @@ DROP ROLE IF EXISTS vendedor;
 CREATE ROLE vendedor;
 GRANT SELECT ON tb_produtos TO vendedor;
 GRANT UPDATE ON tb_produtos TO vendedor;
+GRANT SELECT ON tb_funcionarios TO vendedor;
 
 DROP OWNED BY estoquista;
 DROP ROLE IF EXISTS estoquista;
@@ -100,6 +101,7 @@ GRANT INSERT ON tb_produtos TO estoquista;
 GRANT SELECT ON tb_produtos TO estoquista;
 GRANT UPDATE ON tb_produtos TO estoquista;
 GRANT DELETE ON tb_produtos TO estoquista;
+GRANT SELECT ON tb_funcionarios TO estoquista;
 
 GRANT vendedor to admin WITH ADMIN OPTION;
 GRANT estoquista to admin WITH ADMIN OPTION;
