@@ -38,6 +38,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jButtonEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setMinimumSize(new java.awt.Dimension(600, 400));
         setResizable(false);
 

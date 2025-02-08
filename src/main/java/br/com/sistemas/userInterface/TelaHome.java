@@ -102,6 +102,7 @@ public class TelaHome extends javax.swing.JFrame {
         jMenuItemFornecedores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Home");
 
         tabelaMostrarFuncionarios.setModel(modeloFuncionario);
         tabelaMostrarFuncionarios.setEnabled(false);

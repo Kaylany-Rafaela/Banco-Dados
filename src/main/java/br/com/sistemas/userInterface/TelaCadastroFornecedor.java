@@ -34,6 +34,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jTextFieldDescricaoFornecedor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Fornecedor");
 
         jButtonOk.setText("OK");
         jButtonOk.addActionListener(new java.awt.event.ActionListener() {

@@ -66,6 +66,7 @@ public class TelaEstoque extends javax.swing.JFrame {
         jButtonAtualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Estoque");
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 

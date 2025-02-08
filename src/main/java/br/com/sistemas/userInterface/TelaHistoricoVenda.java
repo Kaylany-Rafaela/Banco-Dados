@@ -67,6 +67,7 @@ public class TelaHistoricoVenda extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Historico de Venda");
 
         jTable1.setModel(modelo);
         jScrollPane1.setViewportView(jTable1);

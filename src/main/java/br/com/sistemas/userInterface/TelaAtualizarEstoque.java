@@ -83,6 +83,7 @@ public class TelaAtualizarEstoque extends javax.swing.JFrame {
         jLabelMensagemErroCodigo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Atualização de Estoque");
 
         jTextFieldBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

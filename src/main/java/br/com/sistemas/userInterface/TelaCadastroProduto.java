@@ -43,6 +43,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         buttonAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Produtos");
         setResizable(false);
 
         jLabelQuantidade.setText("Quantidade");

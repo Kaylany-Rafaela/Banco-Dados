@@ -34,6 +34,7 @@ public class TelaRemocaoProduto extends javax.swing.JFrame {
         jTextFieldIdProduto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Remover produto");
 
         jButtonOk.setText("OK");
         jButtonOk.addActionListener(new java.awt.event.ActionListener() {
