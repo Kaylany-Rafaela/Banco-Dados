@@ -41,7 +41,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         jTextFieldUsername = new javax.swing.JTextField();
         jLabelSenha = new javax.swing.JLabel();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
-        jButtonSair = new javax.swing.JButton();
         jButtonCadastrar = new javax.swing.JButton();
         jLabelCPF = new javax.swing.JLabel();
         jTextFieldCPF = new javax.swing.JTextField();
@@ -57,7 +56,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(600, 400));
         setMinimumSize(new java.awt.Dimension(600, 400));
-        setUndecorated(true);
         setResizable(false);
 
         jLabelNome.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -71,13 +69,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
 
         jLabelSenha.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabelSenha.setText("Senha");
-
-        jButtonSair.setText("X");
-        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSairActionPerformed(evt);
-            }
-        });
 
         jButtonCadastrar.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jButtonCadastrar.setText("Cadastrar");
@@ -116,13 +107,8 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonSair))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addComponent(jLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -140,13 +126,13 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelErroSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBoxFuncao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelCPF)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabelErroCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabelCPF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxFuncao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelErroCPF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(jLabel4))
@@ -158,8 +144,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButtonSair)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -189,7 +174,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                 .addComponent(jLabelError))
         );
 
-        setSize(new java.awt.Dimension(600, 429));
+        setSize(new java.awt.Dimension(616, 437));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,10 +219,10 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                     
                     // Encerra a transação e mostra mensagam de sucesso
                     ps.close();
-                    JOptionPane.showMessageDialog(null, "Registrado usuário " + cpf + " (" + username + ")" + " com sucesso!");
+                    JOptionPane.showMessageDialog(this, "Registrado usuário " + cpf + " (" + username + ")" + " com sucesso!");
                     dispose(); // Auto-fecha janela de cadastro;
                 } catch (SQLException e){
-                    JOptionPane.showMessageDialog(null, e.getMessage());
+                    JOptionPane.showMessageDialog(this, e.getMessage());
                 }               
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 }
@@ -245,18 +230,12 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCPFActionPerformed
 
-    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_jButtonSairActionPerformed
-
     private void jTextFieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUsernameActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
-    private javax.swing.JButton jButtonSair;
     private javax.swing.JComboBox<String> jComboBoxFuncao;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

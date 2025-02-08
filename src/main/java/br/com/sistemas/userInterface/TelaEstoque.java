@@ -43,7 +43,7 @@ public class TelaEstoque extends javax.swing.JFrame {
                 }
             ps.close();
         } catch(SQLException e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
     
@@ -62,7 +62,6 @@ public class TelaEstoque extends javax.swing.JFrame {
         buttonAdicionar = new javax.swing.JButton();
         buttonBuscar = new javax.swing.JButton();
         jTextFieldBuscarProduto = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         buttonRemover = new javax.swing.JButton();
         jButtonAtualizar = new javax.swing.JButton();
 
@@ -88,13 +87,12 @@ public class TelaEstoque extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldBuscarProduto.setToolTipText("");
         jTextFieldBuscarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldBuscarProdutoActionPerformed(evt);
             }
         });
-
-        jLabel1.setText("Buscar:");
 
         buttonRemover.setText("Remover");
         buttonRemover.addActionListener(new java.awt.event.ActionListener() {
@@ -119,29 +117,26 @@ public class TelaEstoque extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextFieldBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonBuscar)
+                        .addComponent(jTextFieldBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAtualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(buttonRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buttonBuscar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(buttonBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldBuscarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBuscar)
                     .addComponent(buttonAdicionar)
                     .addComponent(buttonRemover)
                     .addComponent(jButtonAtualizar))
@@ -183,7 +178,6 @@ public class TelaEstoque extends javax.swing.JFrame {
     private javax.swing.JButton buttonBuscar;
     private javax.swing.JButton buttonRemover;
     private javax.swing.JButton jButtonAtualizar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldBuscarProduto;
     private javax.swing.JTable tabelaProdutosEstoque;

@@ -142,19 +142,28 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE vender_produto(inputCodigo text, inputDescricao text, inputQuantidade text)
+CREATE OR REPLACE PROCEDURE vender_produto(inputCodigo text, inputDescricao text, inputQuantidade text, inputValorTotal text, inputCPFVendedor text)
     AS $$
 DECLARE
     var_codigo BIGINT;
     var_quantidadeVenda INT;
     var_quantidadeEstoque INT;
+    var_valorTotal DECIMAL(10, 2);
+    var_codVendedor BIGINT;
+    var_codVenda BIGINT;
 BEGIN   
+    -- Null check pra todas as entradas
 	IF inputCodigo IS NULL THEN
         RAISE EXCEPTION 'Codigo nao pode ser nulo';
     ELSIF inputQuantidade IS NULL THEN
         RAISE EXCEPTION 'Quantidade nao pode ser nula';
+    ELSIF inputValorTotal IS NULL THEN
+        RAISE EXCEPTION 'Valor total nao pode ser nulo';
+    ELSEIF inputCPFVendedor IS NULL THEN
+        RAISE EXCEPTION 'Nome do vendedor nao pode ser nulo';
     END IF;
 
+    -- Type check pra todas as entradas
     BEGIN
         var_codigo := inputCodigo::BIGINT;
     EXCEPTION WHEN others THEN
@@ -166,40 +175,31 @@ BEGIN
     EXCEPTION WHEN others THEN
         RAISE EXCEPTION 'Quantidade do Produto nao e um numero valido: %', inputQuantidade;
     END;
+    BEGIN
+        var_valorTotal := inputValorTotal::DECIMAL(10, 2);
+    EXCEPTION WHEN others THEN
+        RAISE EXCEPTION 'Valor total da venda nao e um numero valido: %', inputValorTotal;
+    END;
 
+    -- Check se há suficiente no estoque
     SELECT pro_quantidade FROM tb_produtos WHERE pro_codigo = var_codigo INTO var_quantidadeEstoque;
     IF (var_quantidadeEstoque - var_quantidadeVenda) < 0 THEN
         RAISE EXCEPTION 'Quantidade do produto % indisponivel no estoque', inputDescricao;
     END IF;
 
+    -- Atualizar a quantidade do produto
     UPDATE tb_produtos SET pro_quantidade = pro_quantidade - var_quantidadeVenda WHERE pro_codigo = var_codigo;
-END;
-$$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE PROCEDURE vender_produto(inputCodigo text, inputQuantidade text)
-    AS $$
-DECLARE
-    var_codigo BIGINT;
-    var_quantidade INT;
-BEGIN   
-	IF inputCodigo IS NULL THEN
-        RAISE EXCEPTION 'Codigo nao pode ser nulo';
-    ELSIF inputQuantidade IS NULL THEN
-        RAISE EXCEPTION 'Quantidade nao pode ser nula';
+    -- Registrar a venda na tabela
+
+    -- Atribui o codigo do funcionario
+    SELECT fun_codigo from view_funcionarios_login WHERE fun_cpf = inputCPFVendedor INTO var_codVendedor;
+    SELECT max(ven_codigo) FROM tb_vendas INTO var_codVenda;
+    IF var_codVenda IS NULL THEN
+        var_codVenda := 1;
+    ELSE
+        var_codVenda := var_codVenda + 1;
     END IF;
-
-    BEGIN
-        var_codigo := inputCodigo::BIGINT;
-    EXCEPTION WHEN others THEN
-        RAISE EXCEPTION 'ID do Produto nao e um numero valido: %', inputCodigo;
-    END;
-
-    BEGIN
-        var_quantidadeVenda := inputQuantidade::INT;
-    EXCEPTION WHEN others THEN
-        RAISE EXCEPTION 'Quantidade do Produto nao e um numero valido: %', inputQuantidade;
-    END;
-
-    UPDATE tb_produtos SET pro_quantidade = pro_quantidade + var_quantidade WHERE pro_codigo = var_codigo;
+    INSERT INTO tb_vendas(ven_codigo, ven_valor_total, tb_funcionarios_fun_codigo) VALUES (var_codVenda, var_valorTotal, var_codVendedor);
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SECURITY DEFINER;

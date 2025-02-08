@@ -56,10 +56,13 @@ public class ConexaoBDPostgres {
         return conexao;
     }
 
+    public String getCPF(){
+        return this.cpf;
+    }
     // Retorna a funcao do usuário com o cpf informado
     public String getCargo(String cpf){
         String cargo = "nulo";
-        String sql = "SELECT fun_funcao FROM tb_funcionarios WHERE fun_cpf = '" + cpf + "';";
+        String sql = "SELECT fun_funcao FROM view_funcionarios_login WHERE fun_cpf = '" + cpf + "';";
         try 
         {
             PreparedStatement ps = conexao.prepareStatement(sql);

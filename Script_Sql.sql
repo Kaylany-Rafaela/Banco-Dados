@@ -66,6 +66,10 @@ CREATE TABLE tb_itens (
     FOREIGN KEY (tb_vendas_ven_codigo) REFERENCES tb_vendas (ven_codigo)
 );
 
+CREATE OR REPLACE VIEW view_funcionarios_login 
+AS SELECT fun_codigo, fun_nome, fun_cpf, fun_funcao FROM tb_funcionarios
+WITH CHECK OPTION;
+
 -- Criação de Indexação --
 
 	-- Índice de Buscas por Descrição de Produtos: 
@@ -91,8 +95,8 @@ DROP OWNED BY vendedor;
 DROP ROLE IF EXISTS vendedor;
 CREATE ROLE vendedor;
 GRANT SELECT ON tb_produtos TO vendedor;
-GRANT UPDATE ON tb_produtos TO vendedor;
-GRANT SELECT ON tb_funcionarios TO vendedor;
+GRANT SELECT ON tb_vendas TO vendedor;
+GRANT SELECT ON view_funcionarios_login TO vendedor;
 
 DROP OWNED BY estoquista;
 DROP ROLE IF EXISTS estoquista;
@@ -101,7 +105,7 @@ GRANT INSERT ON tb_produtos TO estoquista;
 GRANT SELECT ON tb_produtos TO estoquista;
 GRANT UPDATE ON tb_produtos TO estoquista;
 GRANT DELETE ON tb_produtos TO estoquista;
-GRANT SELECT ON tb_funcionarios TO estoquista;
+GRANT SELECT ON view_funcionarios_login TO estoquista;
 
 GRANT vendedor to admin WITH ADMIN OPTION;
 GRANT estoquista to admin WITH ADMIN OPTION;

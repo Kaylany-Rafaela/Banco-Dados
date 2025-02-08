@@ -123,7 +123,9 @@ public class TelaLogin extends javax.swing.JFrame {
                    TelaEstoque telaEstoque = new TelaEstoque(conexao);
                    telaEstoque.setVisible(true);
                 } else{
-                    JOptionPane.showMessageDialog(null, "Erro! Cargo não encontrado");
+                // Se não encontrar o cargo, desconecta e avisa o usuário
+                    conexao.disconnect();
+                    JOptionPane.showMessageDialog(this, "Erro! Cargo não encontrado");
                 }
             }  
         }

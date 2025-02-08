@@ -33,7 +33,7 @@ public class TelaRemocaoProduto extends javax.swing.JFrame {
         jLabelNomeFornecedor = new javax.swing.JLabel();
         jTextFieldIdProduto = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButtonOk.setText("OK");
         jButtonOk.addActionListener(new java.awt.event.ActionListener() {
@@ -94,10 +94,10 @@ public class TelaRemocaoProduto extends javax.swing.JFrame {
 
                 // Encerra a transação e mostra mensagam de sucesso
                 ps.close();
-                JOptionPane.showMessageDialog(null, "Removido produto " + idProduto + " com sucesso!");
+                JOptionPane.showMessageDialog(this, "Removido produto " + idProduto + " com sucesso!");
                 dispose(); // Auto-fecha janela de remocao;
             } catch (SQLException e){
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                JOptionPane.showMessageDialog(this, e.getMessage());
             }       
     }//GEN-LAST:event_jButtonOkActionPerformed
 

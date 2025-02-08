@@ -46,7 +46,7 @@ public class TelaAtualizarEstoque extends javax.swing.JFrame {
                     }
                     ps.close();
             } catch(SQLException e){
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                JOptionPane.showMessageDialog(this, e.getMessage());
             }
         }
     }
@@ -58,9 +58,9 @@ public class TelaAtualizarEstoque extends javax.swing.JFrame {
             PreparedStatement ps = conexao.getConexao().prepareStatement(sql);
             ps.executeUpdate();
             ps.close();
-            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
+            JOptionPane.showMessageDialog(this, "Atualizado com sucesso!");
         } catch (SQLException e){
-            JOptionPane.showMessageDialog(null, "Erro" + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Erro" + e.getMessage());
         }
     }
     
@@ -82,7 +82,7 @@ public class TelaAtualizarEstoque extends javax.swing.JFrame {
         jButtonAdicionar = new javax.swing.JButton();
         jLabelMensagemErroCodigo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextFieldBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

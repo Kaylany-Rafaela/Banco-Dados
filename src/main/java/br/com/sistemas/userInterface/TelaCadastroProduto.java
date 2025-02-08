@@ -159,10 +159,10 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         // Conexão com o banco e inserção dos dados
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "✅ Produto " + descricaoProduto + " inserido com sucesso!");
+            JOptionPane.showMessageDialog(this, "✅ Produto " + descricaoProduto + " inserido com sucesso!");
             stmt.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_buttonAdicionarActionPerformed
 

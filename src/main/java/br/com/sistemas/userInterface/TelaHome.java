@@ -36,9 +36,9 @@ public class TelaHome extends javax.swing.JFrame {
         carregarFornecedores();
     }
 
-     public final void carregarFuncionarios() {
+    public final void carregarFuncionarios() {
         String sql = "SELECT * FROM tb_funcionarios;";
-        try  (PreparedStatement ps = conexao.getConexao().prepareStatement(sql);
+        try (PreparedStatement ps = conexao.getConexao().prepareStatement(sql);
             ResultSet rs = ps.executeQuery()) {
                 while(modeloFuncionario.getRowCount() > 0) {
                     modeloFuncionario.removeRow(0);
@@ -53,7 +53,7 @@ public class TelaHome extends javax.swing.JFrame {
                 }
                 ps.close();
         } catch(SQLException e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
     

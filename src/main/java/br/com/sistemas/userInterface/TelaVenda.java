@@ -40,7 +40,7 @@ public class TelaVenda extends javax.swing.JFrame {
             ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     if(((rs.getInt("pro_quantidade") - quantidadeVenda) < 0)){
-                        JOptionPane.showMessageDialog(null, "Quantidade indisponinel no estoque! Disponivel: " + rs.getInt("pro_quantidade"));
+                        JOptionPane.showMessageDialog(this, "Quantidade indisponinel no estoque! Disponivel: " + rs.getInt("pro_quantidade"));
                         ps.close();
                         return;
                     }
@@ -54,11 +54,11 @@ public class TelaVenda extends javax.swing.JFrame {
                 }
                 ps.close();
                 if(modelo.getRowCount() == 0){
-                    JOptionPane.showMessageDialog(null, "Produto com ID " + busca + " nao encontrado!");
+                    JOptionPane.showMessageDialog(this, "Produto com ID " + busca + " nao encontrado!");
                     return;
                 }
         } catch(SQLException e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
         mostrarSubtotal.setText("R$ " + calcularSubtotal() + "0");
     }
@@ -72,6 +72,7 @@ public class TelaVenda extends javax.swing.JFrame {
     }
     
     public void realizarVenda(){
+        double subtotal = calcularSubtotal();
         String sql = "";
         int cons_cod;
         String cons_desc;
@@ -80,16 +81,16 @@ public class TelaVenda extends javax.swing.JFrame {
             cons_cod = (int)modelo.getValueAt(i, 0);
             cons_desc = (String)modelo.getValueAt(i, 1);
             cons_quantidade = (int)modelo.getValueAt(i, 2);
-            sql = sql.concat("CALL vender_produto('" + cons_cod + "', '" + cons_desc + "', '" + cons_quantidade + "');");
+            sql = sql.concat("CALL vender_produto('" + cons_cod + "', '" + cons_desc + "', '" + cons_quantidade + "', '" + subtotal + "', '" + conexao.getCPF() + "');");
         }
         try {
             PreparedStatement ps = conexao.getConexao().prepareStatement(sql);
             ps.executeUpdate();
             ps.close();
-            JOptionPane.showMessageDialog(null, "Venda realizada! Subtotal: R$ " + calcularSubtotal() + "0");
+            JOptionPane.showMessageDialog(this, "Venda realizada! Subtotal: R$ " + subtotal + "0");
             modelo.setRowCount(0);
         } catch (SQLException e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
     
@@ -125,6 +126,8 @@ public class TelaVenda extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabelMensagemErroCodigo = new javax.swing.JLabel();
         jLabelMensagemErroQuantidade = new javax.swing.JLabel();
+        jButtonAbrirHistorico = new javax.swing.JButton();
+        jLabelMensagemErroTabelaVazia = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -237,6 +240,16 @@ public class TelaVenda extends javax.swing.JFrame {
         jLabelMensagemErroQuantidade.setForeground(new java.awt.Color(214, 217, 223));
         jLabelMensagemErroQuantidade.setText("Insira uma quantidade!");
 
+        jButtonAbrirHistorico.setText("Histórico");
+        jButtonAbrirHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAbrirHistoricoActionPerformed(evt);
+            }
+        });
+
+        jLabelMensagemErroTabelaVazia.setForeground(new java.awt.Color(214, 217, 223));
+        jLabelMensagemErroTabelaVazia.setText("Adicione um produto!");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -253,20 +266,25 @@ public class TelaVenda extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
-                                    .addComponent(textoCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(mostrarSubtotal)
-                                    .addComponent(buttonConcluirVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabelMensagemErroQuantidade)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addGap(18, 18, 18)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(buttonAdicionar)
-                                                .addComponent(seletorDeQuantidadeDeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel3)
+                                        .addComponent(textoCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4)
+                                        .addComponent(mostrarSubtotal)
+                                        .addComponent(buttonConcluirVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabelMensagemErroQuantidade)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(buttonAdicionar)
+                                                    .addComponent(seletorDeQuantidadeDeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jButtonAbrirHistorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(jLabelMensagemErroTabelaVazia)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,7 +298,7 @@ public class TelaVenda extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(textoCodigoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -298,7 +316,11 @@ public class TelaVenda extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(mostrarSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(buttonConcluirVenda))
+                        .addComponent(buttonConcluirVenda)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelMensagemErroTabelaVazia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAbrirHistorico))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6))
         );
@@ -368,12 +390,23 @@ public class TelaVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAdicionarActionPerformed
 
     private void buttonConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConcluirVendaActionPerformed
-        realizarVenda();
+        if(modelo.getRowCount() == 0){
+            jLabelMensagemErroTabelaVazia.setForeground(Color.red);
+        } else{
+            jLabelMensagemErroTabelaVazia.setForeground(new Color(214, 217, 223));
+            realizarVenda();
+        }
     }//GEN-LAST:event_buttonConcluirVendaActionPerformed
+
+    private void jButtonAbrirHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAbrirHistoricoActionPerformed
+        TelaHistoricoVenda telaHistoricoVenda = new TelaHistoricoVenda(conexao);
+        telaHistoricoVenda.setVisible(true);
+    }//GEN-LAST:event_jButtonAbrirHistoricoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
     private javax.swing.JButton buttonConcluirVenda;
+    private javax.swing.JButton jButtonAbrirHistorico;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrame3;
@@ -383,6 +416,7 @@ public class TelaVenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelMensagemErroCodigo;
     private javax.swing.JLabel jLabelMensagemErroQuantidade;
+    private javax.swing.JLabel jLabelMensagemErroTabelaVazia;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
