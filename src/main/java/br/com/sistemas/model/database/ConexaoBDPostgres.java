@@ -16,7 +16,7 @@ public class ConexaoBDPostgres {
     private static final String HOST = "localhost";
     private static final int PORTA = 5432;
     
-    String cpf, senha, nomeBanco;
+    protected String cpf, senha, nomeBanco;
     
     public ConexaoBDPostgres(String cpf, String senha, String nomeBanco){
         this.cpf = cpf;

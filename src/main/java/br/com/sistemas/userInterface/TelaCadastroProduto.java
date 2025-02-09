@@ -32,81 +32,71 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelQuantidade = new javax.swing.JLabel();
-        jTextFieldQuantidadeProduto = new javax.swing.JTextField();
-        jLabelPreco = new javax.swing.JLabel();
-        jTextFieldValorProduto = new javax.swing.JTextField();
-        jLabelDescricao = new javax.swing.JLabel();
-        jTextFieldDescricaoProduto = new javax.swing.JTextField();
-        jLabelFornecedor = new javax.swing.JLabel();
-        jTextFieldIdFornecedorProduto = new javax.swing.JTextField();
         buttonAdicionar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabelFornecedor = new javax.swing.JLabel();
+        jLabelPreco = new javax.swing.JLabel();
+        jTextFieldDescricaoProduto = new javax.swing.JTextField();
+        jTextFieldValorProduto = new javax.swing.JTextField();
+        jTextFieldQuantidadeProduto = new javax.swing.JTextField();
+        jLabelQuantidade = new javax.swing.JLabel();
+        jLabelDescricao = new javax.swing.JLabel();
+        jTextFieldIdFornecedorProduto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Produtos");
         setResizable(false);
 
-        jLabelQuantidade.setText("Quantidade");
-
-        jTextFieldQuantidadeProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldQuantidadeProdutoActionPerformed(evt);
-            }
-        });
-
-        jLabelPreco.setText("Valor");
-
-        jTextFieldValorProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldValorProdutoActionPerformed(evt);
-            }
-        });
-
-        jLabelDescricao.setText("Descrição");
-
-        jTextFieldDescricaoProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDescricaoProdutoActionPerformed(evt);
-            }
-        });
-
-        jLabelFornecedor.setText("ID Fornecedor");
-
-        jTextFieldIdFornecedorProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldIdFornecedorProdutoActionPerformed(evt);
-            }
-        });
-
-        buttonAdicionar.setText("Adicionar");
+        buttonAdicionar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buttonAdicionar.setText("Cadastrar Produto");
         buttonAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAdicionarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        jLabelFornecedor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelFornecedor.setText("ID Fornecedor");
+
+        jLabelPreco.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelPreco.setText("Valor");
+
+        jTextFieldDescricaoProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jTextFieldValorProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jTextFieldQuantidadeProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jLabelQuantidade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelQuantidade.setText("Quantidade");
+
+        jLabelDescricao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelDescricao.setText("Descrição");
+
+        jTextFieldIdFornecedorProduto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelQuantidade)
                     .addComponent(jLabelPreco)
                     .addComponent(jLabelDescricao)
                     .addComponent(jLabelFornecedor)
-                    .addComponent(jTextFieldIdFornecedorProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(jTextFieldIdFornecedorProduto)
                     .addComponent(jTextFieldDescricaoProduto)
                     .addComponent(jTextFieldValorProduto)
-                    .addComponent(jTextFieldQuantidadeProduto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonAdicionar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTextFieldQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelQuantidade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -123,6 +113,25 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 .addComponent(jLabelFornecedor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldIdFornecedorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonAdicionar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -135,54 +144,35 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
     private void buttonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarActionPerformed
 
-        // Criando um objeto da classe de conexão
-
         Connection conexao = conexaoBD.getConexao();
 
         // Pegando os valores dos campos de texto
         String descricaoProduto = jTextFieldDescricaoProduto.getText();
-        double valorProduto = 0;
-        int quantidadeProduto = 0;
-        int idFornecedorProduto = 0;
+        double valorProduto;
+        int quantidadeProduto;
+        int idFornecedorProduto;
 
+        // Verificação de tipo das entradas
         try {
             valorProduto = Double.parseDouble(jTextFieldValorProduto.getText());
             quantidadeProduto = Integer.parseInt(jTextFieldQuantidadeProduto.getText());
             idFornecedorProduto = Integer.parseInt(jTextFieldIdFornecedorProduto.getText());
         } catch (NumberFormatException e) {
-            System.out.println("Erro: Certifique-se de que o preço e a quantidade são números válidos.");
+            JOptionPane.showMessageDialog(this, "Erro: Certifique-se de que o preço e a quantidade são números válidos.");
+            return;
         }
 
-        // Query SQL
         String sql = "CALL insert_tb_produtos('" + descricaoProduto + "', '" + valorProduto + "', '" 
                 + quantidadeProduto + "', '" + idFornecedorProduto + "')";
 
-        // Conexão com o banco e inserção dos dados
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.executeUpdate();
+        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+            ps.executeUpdate();
             JOptionPane.showMessageDialog(this, "✅ Produto " + descricaoProduto + " inserido com sucesso!");
-            stmt.close();
+            ps.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_buttonAdicionarActionPerformed
-
-    private void jTextFieldValorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorProdutoActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jTextFieldValorProdutoActionPerformed
-
-    private void jTextFieldQuantidadeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQuantidadeProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldQuantidadeProdutoActionPerformed
-
-    private void jTextFieldDescricaoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDescricaoProdutoActionPerformed
-
-    private void jTextFieldIdFornecedorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdFornecedorProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIdFornecedorProdutoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
@@ -190,6 +180,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFornecedor;
     private javax.swing.JLabel jLabelPreco;
     private javax.swing.JLabel jLabelQuantidade;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldDescricaoProduto;
     private javax.swing.JTextField jTextFieldIdFornecedorProduto;
     private javax.swing.JTextField jTextFieldQuantidadeProduto;
