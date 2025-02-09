@@ -1,3 +1,0 @@
-guest: antes do login, só serve para poder cadastrar usuários
-vendedor: usuário pleno com permissões de ver o estoque e rodar funções que modifiquem ele
-admin: postgres postgres
