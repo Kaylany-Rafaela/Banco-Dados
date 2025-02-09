@@ -95,9 +95,6 @@ public class TelaHome extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemRefresh = new javax.swing.JMenuItem();
-        jMenuMovimentacao = new javax.swing.JMenu();
-        jMenuItemVendas = new javax.swing.JMenuItem();
-        jMenuItemEstoque = new javax.swing.JMenuItem();
         jMenuCadastrar = new javax.swing.JMenu();
         jMenuItemFuncionarios = new javax.swing.JMenuItem();
         jMenuItemFornecedores = new javax.swing.JMenuItem();
@@ -164,26 +161,6 @@ public class TelaHome extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenuMovimentacao.setText("Movimentação");
-
-        jMenuItemVendas.setText("Vendas");
-        jMenuItemVendas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemVendasActionPerformed(evt);
-            }
-        });
-        jMenuMovimentacao.add(jMenuItemVendas);
-
-        jMenuItemEstoque.setText("Estoque");
-        jMenuItemEstoque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemEstoqueActionPerformed(evt);
-            }
-        });
-        jMenuMovimentacao.add(jMenuItemEstoque);
-
-        jMenuBar1.add(jMenuMovimentacao);
-
         jMenuCadastrar.setText("Cadastrar");
 
         jMenuItemFuncionarios.setText("Funcionários");
@@ -227,16 +204,6 @@ public class TelaHome extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVendasActionPerformed
-        TelaVenda telaVenda = new TelaVenda(conexao);
-        telaVenda.setVisible(true);
-    }//GEN-LAST:event_jMenuItemVendasActionPerformed
-
-    private void jMenuItemEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstoqueActionPerformed
-        TelaEstoque telaDoEstoque = new TelaEstoque(conexao);
-        telaDoEstoque.setVisible(true);
-    }//GEN-LAST:event_jMenuItemEstoqueActionPerformed
-
     private void jMenuItemFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionariosActionPerformed
         TelaCadastroUsuario telaCadastroUsuario = new TelaCadastroUsuario(conexao);
         telaCadastroUsuario.setVisible(true);
@@ -258,12 +225,9 @@ public class TelaHome extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastrar;
-    private javax.swing.JMenuItem jMenuItemEstoque;
     private javax.swing.JMenuItem jMenuItemFornecedores;
     private javax.swing.JMenuItem jMenuItemFuncionarios;
     private javax.swing.JMenuItem jMenuItemRefresh;
-    private javax.swing.JMenuItem jMenuItemVendas;
-    private javax.swing.JMenu jMenuMovimentacao;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
