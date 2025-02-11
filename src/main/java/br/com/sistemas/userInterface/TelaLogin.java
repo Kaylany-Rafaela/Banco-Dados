@@ -127,7 +127,7 @@ public class TelaLogin extends javax.swing.JFrame {
         if (connectionStatus){
             // Se admin, abre tela Home
             if(cpf.equals("admin") || cpf.equals("postgres")){
-                TelaHome telaHome = new TelaHome(conexao);
+                TelaAdmin telaHome = new TelaAdmin(conexao);
                 telaHome.setVisible(true);
             } else {
                 // Senão, busca no banco pela função desse usuário

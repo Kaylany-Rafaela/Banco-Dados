@@ -5,6 +5,8 @@
 package br.com.sistemas.userInterface;
 
 import br.com.sistemas.model.database.ConexaoBDPostgres;
+import java.io.File;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Bastos
  */
-public class TelaHome extends javax.swing.JFrame {
+public class TelaAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaHome
@@ -29,7 +31,7 @@ public class TelaHome extends javax.swing.JFrame {
     DefaultTableModel modeloFornecedor = new DefaultTableModel(new Object [][] { },
             new String [] { "ID", "Nome" });
     
-    public TelaHome(ConexaoBDPostgres conexao) {
+    public TelaAdmin(ConexaoBDPostgres conexao) {
         this.conexao = conexao;
         initComponents();
         carregarFuncionarios();
@@ -94,13 +96,14 @@ public class TelaHome extends javax.swing.JFrame {
         jLabelFornecedores = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItemBackup = new javax.swing.JMenuItem();
         jMenuItemRefresh = new javax.swing.JMenuItem();
         jMenuCadastrar = new javax.swing.JMenu();
         jMenuItemFuncionarios = new javax.swing.JMenuItem();
         jMenuItemFornecedores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Home");
+        setTitle("Admininstração");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
@@ -150,6 +153,14 @@ public class TelaHome extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Sistema");
+
+        jMenuItemBackup.setText("Backup");
+        jMenuItemBackup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBackupActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemBackup);
 
         jMenuItemRefresh.setText("Refresh");
         jMenuItemRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -219,12 +230,27 @@ public class TelaHome extends javax.swing.JFrame {
         carregarFornecedores();
     }//GEN-LAST:event_jMenuItemRefreshActionPerformed
 
+    private void jMenuItemBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBackupActionPerformed
+        try {
+            File backup = new File("backup_manual.bat");
+            if(backup.exists()){
+                JOptionPane.showMessageDialog(this, "Realizando backup!");
+                Runtime.getRuntime().exec(new String[] { "cmd.exe", "/c", "backup_manual.bat" } );
+            } else{
+                JOptionPane.showMessageDialog(this, "Erro! Batch file para backup não encontrado!");
+            }        
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jMenuItemBackupActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelFornecedores;
     private javax.swing.JLabel jLabelFornecedores1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastrar;
+    private javax.swing.JMenuItem jMenuItemBackup;
     private javax.swing.JMenuItem jMenuItemFornecedores;
     private javax.swing.JMenuItem jMenuItemFuncionarios;
     private javax.swing.JMenuItem jMenuItemRefresh;
