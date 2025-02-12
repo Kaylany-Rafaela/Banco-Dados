@@ -133,6 +133,11 @@ BEGIN
         RAISE EXCEPTION 'ID Fornecedor nao e um numero valido: %', inputIDFornecedor;
     END;
     
+    IF(var_valor <= 0) THEN
+        RAISE EXCEPTION 'Valor do produto nao pode ser menor ou igual a zero!';
+    ELSIF (var_quantidade < 0) THEN
+        RAISE EXCEPTION 'Quantidade do produto nao pode ser menor que zero!';
+    END IF;
 
     SELECT max(pro_codigo) FROM tb_produtos INTO var_codigo;
 
@@ -144,7 +149,7 @@ BEGIN
 
     INSERT INTO tb_produtos VALUES (var_codigo, var_descricao, var_valor, var_quantidade, var_fornecedores_codigo);
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE OR REPLACE PROCEDURE remove_tb_produtos(inputCodigo text)
     AS $$
@@ -162,7 +167,7 @@ BEGIN
 
     DELETE FROM tb_produtos WHERE pro_codigo = var_codigo;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE OR REPLACE PROCEDURE vender_produto(inputCodigo text, inputDescricao text, inputQuantidade text, inputValorTotal text, inputCPFVendedor text)
     AS $$
@@ -202,6 +207,12 @@ BEGIN
     EXCEPTION WHEN others THEN
         RAISE EXCEPTION 'Valor total da venda nao e um numero valido: %', inputValorTotal;
     END;
+
+    IF (var_quantidadeVenda <= 0) THEN
+        RAISE EXCEPTION 'Quantidade de produtos vendidos não pode ser menor ou igual a zero!';
+    ELSIF(var_valorTotal <= 0) THEN
+        RAISE EXCEPTION 'Valor total da venda não pode ser menor ou igual a zero!';
+    END IF;
 
     -- Check se há suficiente no estoque
     SELECT pro_quantidade FROM tb_produtos WHERE pro_codigo = var_codigo INTO var_quantidadeEstoque;

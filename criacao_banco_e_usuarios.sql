@@ -101,10 +101,7 @@ GRANT SELECT ON view_funcionarios_login TO vendedor;
 DROP OWNED BY estoquista;
 DROP ROLE IF EXISTS estoquista;
 CREATE ROLE estoquista;
-GRANT INSERT ON tb_produtos TO estoquista;
 GRANT SELECT ON tb_produtos TO estoquista;
-GRANT UPDATE ON tb_produtos TO estoquista;
-GRANT DELETE ON tb_produtos TO estoquista;
 GRANT SELECT ON view_funcionarios_login TO estoquista;
 
 GRANT vendedor to admin WITH ADMIN OPTION;
