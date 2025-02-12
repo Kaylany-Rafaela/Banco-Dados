@@ -98,6 +98,7 @@ GRANT SELECT ON tb_produtos TO vendedor;
 GRANT SELECT ON tb_vendas TO vendedor;
 GRANT SELECT ON view_funcionarios_login TO vendedor;
 
+--Criação do grupo estoquista e suas permissões
 DROP OWNED BY estoquista;
 DROP ROLE IF EXISTS estoquista;
 CREATE ROLE estoquista;

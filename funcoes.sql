@@ -169,6 +169,34 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
+CREATE OR REPLACE PROCEDURE entrada_produto(inputCodigo text, inputQuantidade text)
+	AS $$
+DECLARE
+    var_codigo BIGINT;
+    var_quantidade INT;
+BEGIN
+IF inputCodigo IS NULL THEN
+        RAISE EXCEPTION 'Codigo nao pode ser nulo';
+    ELSIF inputQuantidade IS NULL THEN
+        RAISE EXCEPTION 'Quantidade nao pode ser nula';
+    END IF;
+
+    BEGIN
+        var_codigo := inputCodigo::BIGINT;
+    EXCEPTION WHEN others THEN
+        RAISE EXCEPTION 'ID do Produto nao e um numero valido: %', inputCodigo;
+    END;
+
+    BEGIN
+        var_quantidade := inputQuantidade::INT;
+    EXCEPTION WHEN others THEN
+        RAISE EXCEPTION 'Quantidade do Produto nao e um numero valido: %', inputQuantidade;
+    END;
+
+    UPDATE tb_produtos SET pro_quantidade = pro_quantidade + var_quantidade WHERE pro_codigo = var_codigo;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
 CREATE OR REPLACE PROCEDURE vender_produto(inputCodigo text, inputDescricao text, inputQuantidade text, inputValorTotal text, inputCPFVendedor text)
     AS $$
 DECLARE
