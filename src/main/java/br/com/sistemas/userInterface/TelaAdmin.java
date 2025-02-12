@@ -26,10 +26,10 @@ public class TelaAdmin extends javax.swing.JFrame {
      */
     ConexaoBDPostgres conexao;
     DefaultTableModel modeloFuncionario = new DefaultTableModel(new Object [][] { },
-            new String [] { "ID", "Nome", "CPF", "Funcao" });
+            new String [] { "ID Funcionario", "Nome", "CPF", "Funcao" });
     
     DefaultTableModel modeloFornecedor = new DefaultTableModel(new Object [][] { },
-            new String [] { "ID", "Nome" });
+            new String [] { "ID Fornecedor", "Nome" });
     
     public TelaAdmin(ConexaoBDPostgres conexao) {
         this.conexao = conexao;
@@ -88,27 +88,21 @@ public class TelaAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabelFornecedores1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaMostrarFuncionarios = new javax.swing.JTable();
-        jLabelFornecedores = new javax.swing.JLabel();
+        jButtonCadastrarFuncionarios = new javax.swing.JButton();
+        jButtonCadastrarFornecedores = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemBackup = new javax.swing.JMenuItem();
         jMenuItemRefresh = new javax.swing.JMenuItem();
-        jMenuCadastrar = new javax.swing.JMenu();
-        jMenuItemFuncionarios = new javax.swing.JMenuItem();
-        jMenuItemFornecedores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admininstração");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-
-        jLabelFornecedores1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelFornecedores1.setText("Funcionários");
 
         jTable1.setModel(modeloFornecedor);
         jTable1.setEnabled(false);
@@ -120,8 +114,21 @@ public class TelaAdmin extends javax.swing.JFrame {
         tabelaMostrarFuncionarios.setRowSelectionAllowed(false);
         jScrollPane1.setViewportView(tabelaMostrarFuncionarios);
 
-        jLabelFornecedores.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelFornecedores.setText("Fornecedores:");
+        jButtonCadastrarFuncionarios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonCadastrarFuncionarios.setText("Cadastrar Funcionários");
+        jButtonCadastrarFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarFuncionariosActionPerformed(evt);
+            }
+        });
+
+        jButtonCadastrarFornecedores.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButtonCadastrarFornecedores.setText("Cadastrar Fornecedores");
+        jButtonCadastrarFornecedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarFornecedoresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,23 +138,23 @@ public class TelaAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelFornecedores1))
+                    .addComponent(jButtonCadastrarFuncionarios))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFornecedores)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCadastrarFornecedores))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelFornecedores)
-                    .addComponent(jLabelFornecedores1))
+                    .addComponent(jButtonCadastrarFuncionarios)
+                    .addComponent(jButtonCadastrarFornecedores))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -172,58 +179,25 @@ public class TelaAdmin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenuCadastrar.setText("Cadastrar");
-
-        jMenuItemFuncionarios.setText("Funcionários");
-        jMenuItemFuncionarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemFuncionariosActionPerformed(evt);
-            }
-        });
-        jMenuCadastrar.add(jMenuItemFuncionarios);
-
-        jMenuItemFornecedores.setText("Fornecedores");
-        jMenuItemFornecedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemFornecedoresActionPerformed(evt);
-            }
-        });
-        jMenuCadastrar.add(jMenuItemFornecedores);
-
-        jMenuBar1.add(jMenuCadastrar);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItemFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionariosActionPerformed
-        TelaCadastroUsuario telaCadastroUsuario = new TelaCadastroUsuario(conexao);
-        telaCadastroUsuario.setVisible(true);
-    }//GEN-LAST:event_jMenuItemFuncionariosActionPerformed
-
-    private void jMenuItemFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFornecedoresActionPerformed
-        TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor(conexao);
-        telaCadastroFornecedor.setVisible(true);
-    }//GEN-LAST:event_jMenuItemFornecedoresActionPerformed
 
     private void jMenuItemRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRefreshActionPerformed
         carregarFuncionarios();
@@ -233,9 +207,9 @@ public class TelaAdmin extends javax.swing.JFrame {
     private void jMenuItemBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBackupActionPerformed
         try {
             File backup = new File("backup_manual.bat");
-            if(backup.exists()){
-                JOptionPane.showMessageDialog(this, "Realizando backup!");
+            if(backup.isFile()){
                 Runtime.getRuntime().exec(new String[] { "cmd.exe", "/c", "backup_manual.bat" } );
+                JOptionPane.showMessageDialog(this, "Realizando backup!");
             } else{
                 JOptionPane.showMessageDialog(this, "Erro! Batch file para backup não encontrado!");
             }        
@@ -244,15 +218,22 @@ public class TelaAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemBackupActionPerformed
 
+    private void jButtonCadastrarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarFuncionariosActionPerformed
+        TelaCadastroUsuario telaCadastroUsuario = new TelaCadastroUsuario(conexao);
+        telaCadastroUsuario.setVisible(true);
+    }//GEN-LAST:event_jButtonCadastrarFuncionariosActionPerformed
+
+    private void jButtonCadastrarFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarFornecedoresActionPerformed
+        TelaCadastroFornecedor telaCadastroFornecedor = new TelaCadastroFornecedor(conexao);
+        telaCadastroFornecedor.setVisible(true);
+    }//GEN-LAST:event_jButtonCadastrarFornecedoresActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelFornecedores;
-    private javax.swing.JLabel jLabelFornecedores1;
+    private javax.swing.JButton jButtonCadastrarFornecedores;
+    private javax.swing.JButton jButtonCadastrarFuncionarios;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuCadastrar;
     private javax.swing.JMenuItem jMenuItemBackup;
-    private javax.swing.JMenuItem jMenuItemFornecedores;
-    private javax.swing.JMenuItem jMenuItemFuncionarios;
     private javax.swing.JMenuItem jMenuItemRefresh;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

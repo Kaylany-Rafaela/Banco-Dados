@@ -66,7 +66,7 @@ public class TelaEstoque extends javax.swing.JFrame {
         buttonCadastrar = new javax.swing.JButton();
         jButtonEntrada = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Estoque");
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
