@@ -197,25 +197,21 @@ IF inputCodigo IS NULL THEN
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
-CREATE OR REPLACE PROCEDURE vender_produto(inputCodigo text, inputDescricao text, inputQuantidade text, inputValorTotal text, inputCPFVendedor text)
+CREATE OR REPLACE PROCEDURE vender_produto(inputCodigo text, inputDescricao text, inputQuantidade text)
     AS $$
 DECLARE
     var_codigo BIGINT;
     var_quantidadeVenda INT;
     var_quantidadeEstoque INT;
-    var_valorTotal DECIMAL(10, 2);
-    var_codVendedor BIGINT;
     var_codVenda BIGINT;
 BEGIN   
     -- Null check pra todas as entradas
 	IF inputCodigo IS NULL THEN
         RAISE EXCEPTION 'Codigo nao pode ser nulo';
+    ELSIF inputDescricao IS NULL THEN
+        RAISE EXCEPTION 'Descricao nao pode ser nula';
     ELSIF inputQuantidade IS NULL THEN
         RAISE EXCEPTION 'Quantidade nao pode ser nula';
-    ELSIF inputValorTotal IS NULL THEN
-        RAISE EXCEPTION 'Valor total nao pode ser nulo';
-    ELSEIF inputCPFVendedor IS NULL THEN
-        RAISE EXCEPTION 'Nome do vendedor nao pode ser nulo';
     END IF;
 
     -- Type check pra todas as entradas
@@ -230,16 +226,9 @@ BEGIN
     EXCEPTION WHEN others THEN
         RAISE EXCEPTION 'Quantidade do Produto nao e um numero valido: %', inputQuantidade;
     END;
-    BEGIN
-        var_valorTotal := inputValorTotal::DECIMAL(10, 2);
-    EXCEPTION WHEN others THEN
-        RAISE EXCEPTION 'Valor total da venda nao e um numero valido: %', inputValorTotal;
-    END;
 
     IF (var_quantidadeVenda <= 0) THEN
         RAISE EXCEPTION 'Quantidade de produtos vendidos não pode ser menor ou igual a zero!';
-    ELSIF(var_valorTotal <= 0) THEN
-        RAISE EXCEPTION 'Valor total da venda não pode ser menor ou igual a zero!';
     END IF;
 
     -- Check se há suficiente no estoque
@@ -250,6 +239,33 @@ BEGIN
 
     -- Atualizar a quantidade do produto
     UPDATE tb_produtos SET pro_quantidade = pro_quantidade - var_quantidadeVenda WHERE pro_codigo = var_codigo;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE PROCEDURE registrar_venda(inputValorTotal text, inputCPFVendedor text)
+    AS $$
+DECLARE
+    var_valorTotal DECIMAL(10, 2);
+    var_codVendedor BIGINT;
+    var_codVenda BIGINT;
+BEGIN   
+    -- Null check pra todas as entradas
+	IF inputValorTotal IS NULL THEN
+        RAISE EXCEPTION 'Valor total nao pode ser nulo';
+    ELSEIF inputCPFVendedor IS NULL THEN
+        RAISE EXCEPTION 'Nome do vendedor nao pode ser nulo';
+    END IF;
+
+    -- Type check pra todas as entradas
+    BEGIN
+        var_valorTotal := inputValorTotal::DECIMAL(10, 2);
+    EXCEPTION WHEN others THEN
+        RAISE EXCEPTION 'Valor total da venda nao e um numero valido: %', inputValorTotal;
+    END;
+
+    IF(var_valorTotal <= 0) THEN
+        RAISE EXCEPTION 'Valor total da venda não pode ser menor ou igual a zero!';
+    END IF;
 
     -- Registrar a venda na tabela
 

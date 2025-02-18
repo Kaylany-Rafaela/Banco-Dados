@@ -82,8 +82,9 @@ public class TelaVenda extends javax.swing.JFrame {
             cons_cod = (int)modelo.getValueAt(i, 0);
             cons_desc = (String)modelo.getValueAt(i, 1);
             cons_quantidade = (int)modelo.getValueAt(i, 2);
-            sql = sql.concat("CALL vender_produto('" + cons_cod + "', '" + cons_desc + "', '" + cons_quantidade + "', '" + subtotal + "', '" + cpf + "');");
+            sql = sql.concat("CALL vender_produto('" + cons_cod + "', '" + cons_desc + "', '" + cons_quantidade + "');");
         }
+        sql = sql.concat("CALL registrar_venda('" + subtotal + "', '" + cpf + "');");
         try {
             PreparedStatement ps = conexao.getConexao().prepareStatement(sql);
             ps.executeUpdate();
